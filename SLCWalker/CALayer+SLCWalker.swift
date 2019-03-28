@@ -130,6 +130,7 @@ private func slc_transitionWalker(duration: TimeInterval,
 
 
 private var SLCWalkerCompletionKey: String = "slc.completion"
+
 private let SLCWalkerKeyPathPosition: String = "position"
 private let SLCWalkerKeyPathPositionX: String = "position.x"
 private let SLCWalkerKeyPathPositionY: String = "position.y"
@@ -188,9 +189,9 @@ private enum SLCWalkerType: Int
     case base = 0, spring, path, transition
 }
 
-private var my_animationType: SLCWalkerType  = .base
+private var my_animationType: SLCWalkerType  = SLCWalkerType.base
 private var my_timing: CAMediaTimingFunctionName = CAMediaTimingFunctionName.linear
-private var my_options: UIView.AnimationOptions = .curveLinear;
+private var my_options: UIView.AnimationOptions = UIView.AnimationOptions.curveLinear;
 private var my_delay: TimeInterval = 0.0
 private var my_myRepeatCount: Int = 1
 private var my_reverses: Bool = false
@@ -200,7 +201,7 @@ private var my_currentKeyPath: String = SLCWalkerKeyPathPosition
 private var my_from: Any? = nil
 private var my_to: Any? = nil
 private var my_viewWalkerkeyPath: String = UIViewWalkerKeyFrame
-private var my_theWalker: SLCWalker = .makePosition
+private var my_theWalker: SLCWalker = SLCWalker.makePosition
 private var my_transitionType: SLCWalkerTransitionType = SLCWalkerTransitionTypeFade
 
 
@@ -214,7 +215,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathPosition
         my_from = CGPoint(x: self.centerX, y: self.centerY)
         my_to = point
-        my_theWalker = .makePosition
+        my_theWalker = SLCWalker.makePosition
         return self
     }
     
@@ -224,7 +225,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathPositionX
         my_from = self.centerX
         my_to = x
-        my_theWalker = .makeX
+        my_theWalker = SLCWalker.makeX
         return self
     }
     
@@ -234,7 +235,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathPositionY
         my_from = self.centerY
         my_to = y
-        my_theWalker = .makeY
+        my_theWalker = SLCWalker.makeY
         return self
     }
     
@@ -244,7 +245,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathWidth
         my_from = self.width
         my_to = width
-        my_theWalker = .makeWidth
+        my_theWalker = SLCWalker.makeWidth
         return self
     }
     
@@ -254,7 +255,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathHeight
         my_from = self.height
         my_to = height
-        my_theWalker = .makeHeight
+        my_theWalker = SLCWalker.makeHeight
         return self
     }
     
@@ -264,7 +265,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathSize
         my_from = CGSize(width: self.width, height: self.height)
         my_to = size
-        my_theWalker = .makeSize
+        my_theWalker = SLCWalker.makeSize
         return self
     }
     
@@ -274,7 +275,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathScale
         my_from = 1.0
         my_to = scale
-        my_theWalker = .makeScale
+        my_theWalker = SLCWalker.makeScale
         return self
     }
     
@@ -284,7 +285,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathScaleX
         my_from = 1.0
         my_to = scaleX
-        my_theWalker = .makeScaleX
+        my_theWalker = SLCWalker.makeScaleX
         return self
     }
     
@@ -294,7 +295,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathScaleY
         my_from = 1.0
         my_to = scaleY
-        my_theWalker = .makeScaleY
+        my_theWalker = SLCWalker.makeScaleY
         return self
     }
     
@@ -304,7 +305,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathRotationX
         my_from = 0
         my_to = rotationX
-        my_theWalker = .makeRotationX
+        my_theWalker = SLCWalker.makeRotationX
         return self
     }
     
@@ -314,7 +315,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathRotationY
         my_from = 0
         my_to = rotationY
-        my_theWalker = .makeRotationY
+        my_theWalker = SLCWalker.makeRotationY
         return self
     }
     
@@ -324,7 +325,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathRotationZ
         my_from = 0
         my_to = rotationZ
-        my_theWalker = .makeRotationZ
+        my_theWalker = SLCWalker.makeRotationZ
         return self
     }
     
@@ -334,7 +335,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathBackground
         my_from = self.backgroundColor
         my_to = background
-        my_theWalker = .makeBackground
+        my_theWalker = SLCWalker.makeBackground
         return self
     }
     
@@ -344,7 +345,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathOpacity
         my_from = self.opacity
         my_to = opacity
-        my_theWalker = .makeOpacity
+        my_theWalker = SLCWalker.makeOpacity
         return self
     }
     
@@ -354,7 +355,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathCornerRadius
         my_from = self.cornerRadius
         my_to = corner
-        my_theWalker = .makeCornerRadius
+        my_theWalker = SLCWalker.makeCornerRadius
         return self
     }
     
@@ -364,7 +365,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathStrokeEnd
         my_from = 0
         my_to = storleEnd
-        my_theWalker = .makeStrokeEnd
+        my_theWalker = SLCWalker.makeStrokeEnd
         return self
     }
     
@@ -374,7 +375,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathContent
         my_from = from
         my_to = to
-        my_theWalker = .makeContent
+        my_theWalker = SLCWalker.makeContent
         return self
     }
     
@@ -384,7 +385,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathBorderWidth
         my_from = self.borderWidth
         my_to = borderWidth
-        my_theWalker = .makeBorderWidth
+        my_theWalker = SLCWalker.makeBorderWidth
         return self
     }
     
@@ -394,7 +395,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathShadowColor
         my_from = self.shadowColor
         my_to  = color
-        my_theWalker = .makeShadowColor
+        my_theWalker = SLCWalker.makeShadowColor
         return self
     }
     
@@ -404,7 +405,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathShadowOffset
         my_from = self.shadowOffset
         my_to = shadowOffset
-        my_theWalker = .makeShadowOffset
+        my_theWalker = SLCWalker.makeShadowOffset
         return self
     }
     
@@ -414,7 +415,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathShadowOpacity
         my_from = self.shadowOpacity
         my_to = shadowOpacity
-        my_theWalker = .makeShadowOpacity
+        my_theWalker = SLCWalker.makeShadowOpacity
         return self
     }
     
@@ -424,7 +425,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathShadowRadius
         my_from = self.shadowRadius
         my_to = shadowRdius
-        my_theWalker = .makeShadowRadius
+        my_theWalker = SLCWalker.makeShadowRadius
         return self
     }
     
@@ -441,7 +442,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeyFrame
         my_to = rect
-        my_theWalker = .takeFrame
+        my_theWalker = SLCWalker.takeFrame
         return self
     }
     
@@ -451,7 +452,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeyLeading
         my_to = leading
-        my_theWalker = .takeLeading
+        my_theWalker = SLCWalker.takeLeading
         return self
     }
     
@@ -461,7 +462,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeyTraing
         my_to = traing
-        my_theWalker = .takeTraing
+        my_theWalker = SLCWalker.takeTraing
         return self
     }
 
@@ -471,7 +472,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeyTop
         my_to = top
-        my_theWalker = .takeTop
+        my_theWalker = SLCWalker.takeTop
         return self
     }
     
@@ -481,7 +482,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeyBottom
         my_to = bottom
-        my_theWalker = .takeBottom
+        my_theWalker = SLCWalker.takeBottom
         return self
     }
     
@@ -491,7 +492,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeyWidth
         my_to = width
-        my_theWalker = .takeWidth
+        my_theWalker = SLCWalker.takeWidth
         return self
     }
     
@@ -501,7 +502,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeyHeight
         my_to = height
-        my_theWalker = .takeHeight
+        my_theWalker = SLCWalker.takeHeight
         return self
     }
     
@@ -511,7 +512,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeySize
         my_to = size
-        my_theWalker = .takeSize
+        my_theWalker = SLCWalker.takeSize
         return self
     }
 
@@ -528,7 +529,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathPositionX
         my_from = self.centerX
         my_to = self.centerX + x
-        my_theWalker = .moveX
+        my_theWalker = SLCWalker.moveX
         return self
     }
     
@@ -538,7 +539,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathPositionY
         my_from = self.centerY
         my_to = self.centerY + y
-        my_theWalker = .moveY
+        my_theWalker = SLCWalker.moveY
         return self
     }
     
@@ -548,7 +549,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathPosition
         my_from = CGPoint(x: self.centerX, y: self.centerY)
         my_to = CGPoint(x: self.centerX + xy.x, y: self.centerY + xy.y)
-        my_theWalker = .moveXY
+        my_theWalker = SLCWalker.moveXY
         return self
     }
 
@@ -558,7 +559,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathWidth
         my_from = self.width
         my_to = self.width + width
-        my_theWalker = .moveWidth
+        my_theWalker = SLCWalker.moveWidth
         return self
     }
     
@@ -568,7 +569,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathHeight
         my_from = self.height
         my_to = self.height + height
-        my_theWalker = .moveHeight
+        my_theWalker = SLCWalker.moveHeight
         return self
     }
     
@@ -578,7 +579,7 @@ extension CALayer: CAAnimationDelegate
         my_currentKeyPath = SLCWalkerKeyPathSize
         my_from = CGSize(width: self.width, height: self.height)
         my_to = CGSize(width: self.width + size.width, height: self.height + size.height)
-        my_theWalker = .moveSize
+        my_theWalker = SLCWalker.moveSize
         return self
     }
     
@@ -594,7 +595,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeyLeading
         my_to = self.leading + leading
-        my_theWalker = .addLeading
+        my_theWalker = SLCWalker.addLeading
         return self
     }
     
@@ -604,7 +605,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeyTraing
         my_to = self.traing + traing
-        my_theWalker = .addTraing
+        my_theWalker = SLCWalker.addTraing
         return self
     }
 
@@ -614,7 +615,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeyTop
         my_to = self.top + top
-        my_theWalker = .addTop
+        my_theWalker = SLCWalker.addTop
         return self
     }
     
@@ -624,7 +625,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeyBottom
         my_to = self.bottom + bottom
-        my_theWalker = .addBottom
+        my_theWalker = SLCWalker.addBottom
         return self
     }
     
@@ -634,7 +635,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeyWidth
         my_to = self.width + width
-        my_theWalker = .addWidth
+        my_theWalker = SLCWalker.addWidth
         return self
     }
     
@@ -644,7 +645,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeyHeight
         my_to = self.height + height
-        my_theWalker = .addHeight
+        my_theWalker = SLCWalker.addHeight
         return self
     }
     
@@ -654,7 +655,7 @@ extension CALayer: CAAnimationDelegate
         my_isCAanimation = false
         my_viewWalkerkeyPath = UIViewWalkerKeySize
         my_to = CGSize(width: self.width + size.width, height: self.height + size.height)
-        my_theWalker = .addSize
+        my_theWalker = SLCWalker.addSize
         return self
     }
     
@@ -668,8 +669,8 @@ extension CALayer: CAAnimationDelegate
     {
         self.slc_resetInitParams()
         my_to = dir
-        my_animationType = .transition
-        my_theWalker = .transition
+        my_animationType = SLCWalkerType.transition
+        my_theWalker = SLCWalker.transition
         return self
     }
     
@@ -682,8 +683,8 @@ extension CALayer: CAAnimationDelegate
     {
         self.slc_resetInitParams()
         my_to = apath
-        my_animationType = .path
-        my_theWalker = .path
+        my_animationType = SLCWalkerType.path
+        my_theWalker = SLCWalker.path
         return self
     }
 
@@ -737,26 +738,26 @@ extension CALayer: CAAnimationDelegate
     // MARK: 动画样式
     // animated style
     public var easeInOut: CALayer {
-        my_timing = .easeInEaseOut
-        my_options = .curveEaseInOut
+        my_timing = CAMediaTimingFunctionName.easeInEaseOut
+        my_options = UIView.AnimationOptions.curveEaseInOut
         return self
     }
     
     public var easeIn: CALayer {
-        my_timing = .easeIn
-        my_options = .curveEaseIn
+        my_timing = CAMediaTimingFunctionName.easeIn
+        my_options = UIView.AnimationOptions.curveEaseIn
         return self
     }
     
     public var easeOut: CALayer {
-        my_timing = .easeOut
-        my_options = .curveEaseOut
+        my_timing = CAMediaTimingFunctionName.easeOut
+        my_options = UIView.AnimationOptions.curveEaseOut
         return self
     }
     
     public var easeLiner: CALayer {
-        my_timing = .linear
-        my_options = .curveLinear
+        my_timing = CAMediaTimingFunctionName.linear
+        my_options = UIView.AnimationOptions.curveLinear
         return self
     }
     
@@ -766,7 +767,7 @@ extension CALayer: CAAnimationDelegate
     // MARK: 弹性
     // bounce
     public var spring: CALayer {
-        my_animationType = .spring
+        my_animationType = SLCWalkerType.spring
         return self
     }
     
@@ -859,7 +860,7 @@ extension CALayer: CAAnimationDelegate
     {
         if my_isCAanimation
         {
-            if my_animationType == .base
+            if my_animationType == SLCWalkerType.base
             {
                 let base: CABasicAnimation = slc_baseWalker(keyPath: my_currentKeyPath,
                                                             duration: my_animateTime,
@@ -872,7 +873,7 @@ extension CALayer: CAAnimationDelegate
                 base.delegate = self
                 self.add(base, forKey: nil)
             }
-            else if my_animationType == .spring
+            else if my_animationType == SLCWalkerType.spring
             {
                 let sp: CASpringAnimation = slc_springWalker(keyPath: my_currentKeyPath,
                                                              duration: my_animateTime,
@@ -885,7 +886,7 @@ extension CALayer: CAAnimationDelegate
                 sp.delegate = self
                 self.add(sp, forKey: nil)
             }
-            else if my_animationType == .path
+            else if my_animationType == SLCWalkerType.path
             {
                 let keyframe: CAKeyframeAnimation = slc_keyframeWalker(keyPath: my_currentKeyPath,
                                                                        duration: my_animateTime,
@@ -897,7 +898,7 @@ extension CALayer: CAAnimationDelegate
                 keyframe.delegate = self
                 self.add(keyframe, forKey: nil)
             }
-            else if my_animationType == .transition
+            else if my_animationType == SLCWalkerType.transition
             {
                 let tr: CATransition = slc_transitionWalker(duration: my_animateTime,
                                                             timing: my_timing,
@@ -914,25 +915,25 @@ extension CALayer: CAAnimationDelegate
         {
             if my_reverses
             {
-                if my_options == .curveEaseInOut
+                if my_options == UIView.AnimationOptions.curveEaseInOut
                 {
-                    my_options = [.repeat, .autoreverse, .curveEaseInOut]
+                    my_options = [UIView.AnimationOptions.repeat, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.curveEaseInOut]
                 }
-                else if my_options == .curveEaseIn
+                else if my_options == UIView.AnimationOptions.curveEaseIn
                 {
-                    my_options = [.repeat, .autoreverse, .curveEaseIn]
+                    my_options = [UIView.AnimationOptions.repeat, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.curveEaseIn]
                 }
-                else if my_options == .curveEaseOut
+                else if my_options == UIView.AnimationOptions.curveEaseOut
                 {
-                    my_options = [.repeat, .autoreverse, .curveEaseOut]
+                    my_options = [UIView.AnimationOptions.repeat, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.curveEaseOut]
                 }
                 else
                 {
-                    my_options = [.repeat, .autoreverse, .curveLinear]
+                    my_options = [UIView.AnimationOptions.repeat, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.curveLinear]
                 }
             }
             
-            if my_animationType == .spring
+            if my_animationType == SLCWalkerType.spring
             {
                 let damping: CGFloat = 0.85
                 let velocity: CGFloat = 10.0
@@ -1086,9 +1087,9 @@ extension CALayer: CAAnimationDelegate
         {
             value(my_theWalker)
         }
-        my_animationType = .base
+        my_animationType = SLCWalkerType.base
         my_timing = CAMediaTimingFunctionName.linear
-        my_options = .curveLinear
+        my_options = UIView.AnimationOptions.curveLinear
         my_delay = 0.0
         my_myRepeatCount = 1
         my_reverses = false
@@ -1098,7 +1099,7 @@ extension CALayer: CAAnimationDelegate
         my_from = nil
         my_to = nil
         my_viewWalkerkeyPath = UIViewWalkerKeyFrame
-        my_theWalker = .makePosition
+        my_theWalker = SLCWalker.makePosition
         my_transitionType = SLCWalkerTransitionTypeFade
     }
 }

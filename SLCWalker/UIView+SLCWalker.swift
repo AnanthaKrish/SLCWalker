@@ -61,12 +61,12 @@ private var view_animate: TimeInterval = 0.25
 private var view_from: Any? = nil
 private var view_to: Any? = nil
 
-private var view_theWalker: SLCWalker = .makePosition
-private var view_easeType: SLCViewEasy = .easeLiner
+private var view_theWalker: SLCWalker = SLCWalker.makePosition
+private var view_easeType: SLCViewEasy = SLCViewEasy.easeLiner
 private var view_spring: Bool = false
-private var view_transitionType: SLCViewWalkerTransition = .fade
+private var view_transitionType: SLCViewWalkerTransition = SLCViewWalkerTransition.fade
 private var view_isTransitionContent: Bool = false
-private var view_transitionOptions: UIView.AnimationOptions = .curveLinear
+private var view_transitionOptions: UIView.AnimationOptions = UIView.AnimationOptions.curveLinear
 
 public extension UIView
 {
@@ -75,7 +75,7 @@ public extension UIView
     @discardableResult public func makeSize(_ size: CGSize) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeSize
+        view_theWalker = SLCWalker.makeSize
         view_to = size
         return self
     }
@@ -83,7 +83,7 @@ public extension UIView
     @discardableResult public func makePosition(_ position: CGPoint) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makePosition
+        view_theWalker = SLCWalker.makePosition
         view_to = position
         return self
     }
@@ -91,7 +91,7 @@ public extension UIView
     @discardableResult public func makeX(_ x: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeX
+        view_theWalker = SLCWalker.makeX
         view_to = x
         return self
     }
@@ -99,7 +99,7 @@ public extension UIView
     @discardableResult public func makeY(_ y: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeY
+        view_theWalker = SLCWalker.makeY
         view_to = y
         return self
     }
@@ -107,7 +107,7 @@ public extension UIView
     @discardableResult public func makeWidth(_ width: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeWidth
+        view_theWalker = SLCWalker.makeWidth
         view_to = width
         return self
     }
@@ -115,7 +115,7 @@ public extension UIView
     @discardableResult public func makeHeight(_ height: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeHeight
+        view_theWalker = SLCWalker.makeHeight
         view_to = height
         return self
     }
@@ -123,7 +123,7 @@ public extension UIView
     @discardableResult public func makeScale(_ scale: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeScale
+        view_theWalker = SLCWalker.makeScale
         view_to = scale
         return self
     }
@@ -131,7 +131,7 @@ public extension UIView
     @discardableResult public func makeScaleX(_ scaleX: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeScaleX
+        view_theWalker = SLCWalker.makeScaleX
         view_to = scaleX
         return self
     }
@@ -139,7 +139,7 @@ public extension UIView
     @discardableResult public func makeScaleY(_ scaleY: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeScaleY
+        view_theWalker = SLCWalker.makeScaleY
         view_to = scaleY
         return self
     }
@@ -147,7 +147,7 @@ public extension UIView
     @discardableResult public func makeRotationX(_ rotationX: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeRotationX
+        view_theWalker = SLCWalker.makeRotationX
         view_to = rotationX
         return self
     }
@@ -155,7 +155,7 @@ public extension UIView
     @discardableResult public func makeRotationY(_ rotationY: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeRotationY
+        view_theWalker = SLCWalker.makeRotationY
         view_to = rotationY
         return self
     }
@@ -163,7 +163,7 @@ public extension UIView
     @discardableResult public func makeRotationZ(_ rotationZ: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeRotationZ
+        view_theWalker = SLCWalker.makeRotationZ
         view_to = rotationZ
         return self
     }
@@ -171,7 +171,7 @@ public extension UIView
     @discardableResult public func makeBackground(_ background: UIColor) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeBackground
+        view_theWalker = SLCWalker.makeBackground
         view_to = background
         return self
     }
@@ -179,7 +179,7 @@ public extension UIView
     @discardableResult public func makeOpacity(_ opacity: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeOpacity
+        view_theWalker = SLCWalker.makeOpacity
         view_to = opacity
         return self
     }
@@ -187,7 +187,7 @@ public extension UIView
     @discardableResult public func makeCornerRadius(_ corner: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeCornerRadius
+        view_theWalker = SLCWalker.makeCornerRadius
         view_to = corner
         return self
     }
@@ -195,7 +195,7 @@ public extension UIView
     @discardableResult public func makeStorkeEnd(_ storkeEnd: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeStrokeEnd
+        view_theWalker = SLCWalker.makeStrokeEnd
         view_to = storkeEnd
         return self
     }
@@ -203,7 +203,7 @@ public extension UIView
     @discardableResult public func makeContent(_ from: Any, _ to: Any) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeContent
+        view_theWalker = SLCWalker.makeContent
         view_from = from
         view_to = to
         return self
@@ -212,7 +212,7 @@ public extension UIView
     @discardableResult public func makeBorderWidth(_ borderWidth: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeBorderWidth
+        view_theWalker = SLCWalker.makeBorderWidth
         view_to = borderWidth
         return self
     }
@@ -220,7 +220,7 @@ public extension UIView
     @discardableResult public func makeShadowColor(_ shadowColor: UIColor) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeShadowColor
+        view_theWalker = SLCWalker.makeShadowColor
         view_to = shadowColor
         return self
     }
@@ -228,7 +228,7 @@ public extension UIView
     @discardableResult public func makeShadowOffset(_ shadowOffset: CGSize) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeShadowOffset
+        view_theWalker = SLCWalker.makeShadowOffset
         view_to = shadowOffset
         return self
     }
@@ -236,7 +236,7 @@ public extension UIView
     @discardableResult public func makeShadowOpacity(_ shadowOpacity: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeShadowOpacity
+        view_theWalker = SLCWalker.makeShadowOpacity
         view_to = shadowOpacity
         return self
     }
@@ -244,7 +244,7 @@ public extension UIView
     @discardableResult public func makeShadowRadius(_ shadowRadius: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .makeShadowRadius
+        view_theWalker = SLCWalker.makeShadowRadius
         view_to = shadowRadius
         return self
     }
@@ -259,7 +259,7 @@ public extension UIView
     @discardableResult public func takeFrame(_ rect: CGRect) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .takeFrame
+        view_theWalker = SLCWalker.takeFrame
         view_to = rect
         return self
     }
@@ -267,7 +267,7 @@ public extension UIView
     @discardableResult public func takeLeading(_ leading: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .takeLeading
+        view_theWalker = SLCWalker.takeLeading
         view_to = leading
         return self
     }
@@ -275,7 +275,7 @@ public extension UIView
     @discardableResult public func takeTraing(_ traing: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .takeTraing
+        view_theWalker = SLCWalker.takeTraing
         view_to = traing
         return self
     }
@@ -283,7 +283,7 @@ public extension UIView
     @discardableResult public func takeTop(_ top: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .takeTop
+        view_theWalker = SLCWalker.takeTop
         view_to = top
         return self
     }
@@ -291,7 +291,7 @@ public extension UIView
     @discardableResult public func takeBottom(_ bottom: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .takeBottom
+        view_theWalker = SLCWalker.takeBottom
         view_to = bottom
         return self
     }
@@ -299,7 +299,7 @@ public extension UIView
     @discardableResult public func takeWidth(_ width: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .takeWidth
+        view_theWalker = SLCWalker.takeWidth
         view_to = width
         return self
     }
@@ -307,7 +307,7 @@ public extension UIView
     @discardableResult public func takeHeight(_ height: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .takeHeight
+        view_theWalker = SLCWalker.takeHeight
         view_to = height
         return self
     }
@@ -315,7 +315,7 @@ public extension UIView
     @discardableResult public func takeSize(_ size: CGSize) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .takeSize
+        view_theWalker = SLCWalker.takeSize
         view_to = size
         return self
     }
@@ -332,7 +332,7 @@ public extension UIView
     @discardableResult public func moveX(_ x: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .moveX
+        view_theWalker = SLCWalker.moveX
         view_to = x
         return self
     }
@@ -340,7 +340,7 @@ public extension UIView
     @discardableResult public func moveY(_ y: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .moveY
+        view_theWalker = SLCWalker.moveY
         view_to = y
         return self
     }
@@ -348,7 +348,7 @@ public extension UIView
     @discardableResult public func moveXY(_ xy: CGPoint) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .moveXY
+        view_theWalker = SLCWalker.moveXY
         view_to = xy
         return self
     }
@@ -356,7 +356,7 @@ public extension UIView
     @discardableResult public func moveWidth(_ width: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .moveWidth
+        view_theWalker = SLCWalker.moveWidth
         view_to = width
         return self
     }
@@ -364,7 +364,7 @@ public extension UIView
     @discardableResult public func moveHeight(_ height: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .moveHeight
+        view_theWalker = SLCWalker.moveHeight
         view_to = height
         return self
     }
@@ -372,7 +372,7 @@ public extension UIView
     @discardableResult public func moveSize(_ size: CGSize) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .moveSize
+        view_theWalker = SLCWalker.moveSize
         view_to = size
         return self
     }
@@ -388,7 +388,7 @@ public extension UIView
     @discardableResult public func addLeading(_ leading: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .addLeading
+        view_theWalker = SLCWalker.addLeading
         view_to = leading
         return self
     }
@@ -396,7 +396,7 @@ public extension UIView
     @discardableResult public func addTraing(_ traing: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .addTraing
+        view_theWalker = SLCWalker.addTraing
         view_to = traing
         return self
     }
@@ -404,7 +404,7 @@ public extension UIView
     @discardableResult public func addTop(_ top: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .addTop
+        view_theWalker = SLCWalker.addTop
         view_to = top
         return self
     }
@@ -412,7 +412,7 @@ public extension UIView
     @discardableResult public func addBottom(_ bottom: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .addBottom
+        view_theWalker = SLCWalker.addBottom
         view_to = bottom
         return self
     }
@@ -420,7 +420,7 @@ public extension UIView
     @discardableResult public func addWidth(_ width: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .addWidth
+        view_theWalker = SLCWalker.addWidth
         view_to = width
         return self
     }
@@ -428,7 +428,7 @@ public extension UIView
     @discardableResult public func addHeight(_ height: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .addHeight
+        view_theWalker = SLCWalker.addHeight
         view_to = height
         return self
     }
@@ -436,7 +436,7 @@ public extension UIView
     @discardableResult public func addSize(_ size: CGSize) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .addSize
+        view_theWalker = SLCWalker.addSize
         view_to = size
         return self
     }
@@ -451,7 +451,7 @@ public extension UIView
     @discardableResult public func transitionDir(_ dir: SLCWalkerTransitionDirection) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .transition
+        view_theWalker = SLCWalker.transition
         view_to = dir
         return self
     }
@@ -459,7 +459,7 @@ public extension UIView
     @discardableResult public func transitionFrom(_ from: Any, _ to: Any) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .transition
+        view_theWalker = SLCWalker.transition
         view_from = from
         view_to = to
         view_isTransitionContent = true
@@ -475,7 +475,7 @@ public extension UIView
     @discardableResult public func path(_ apath: UIBezierPath) -> UIView
     {
         self.slc_resetInitParams()
-        view_theWalker = .path
+        view_theWalker = SLCWalker.path
         view_to = apath
         return self
     }
@@ -533,26 +533,26 @@ public extension UIView
     // MARK: 动画样式
     // animated style
     public var easeInOut: UIView {
-        view_easeType = .easeInOut
-        view_transitionOptions = .curveEaseInOut
+        view_easeType = SLCViewEasy.easeInOut
+        view_transitionOptions = UIView.AnimationOptions.curveEaseInOut
         return self
     }
     
     public var easeIn: UIView {
-        view_easeType = .easeIn
-        view_transitionOptions = .curveEaseIn
+        view_easeType = SLCViewEasy.easeIn
+        view_transitionOptions = UIView.AnimationOptions.curveEaseIn
         return self
     }
     
     public var easeOut: UIView {
-        view_easeType = .easeOut
-        view_transitionOptions = .curveEaseOut
+        view_easeType = SLCViewEasy.easeOut
+        view_transitionOptions = UIView.AnimationOptions.curveEaseOut
         return self
     }
     
     public var easeLiner: UIView {
-        view_easeType = .easeLiner
-        view_transitionOptions = .curveLinear
+        view_easeType = SLCViewEasy.easeLiner
+        view_transitionOptions = UIView.AnimationOptions.curveLinear
         return self
     }
     
@@ -573,64 +573,64 @@ public extension UIView
     // MARK: 转场动画样式 (只适用于TRANSITION, spring无效. transitionFrom时只有Curl和UnCurl有效)
     // Transition animation style (only for TRANSITION, spring is unavailable, Only Curl and UnCurl are valid when transitionFrom)
     public var transitionFade: UIView {
-        view_transitionType = .fade
+        view_transitionType = SLCViewWalkerTransition.fade
         return self
     }
     
     public var transitionPush: UIView {
-        view_transitionType = .push
+        view_transitionType = SLCViewWalkerTransition.push
         return self
     }
     
     public var transitionReveal: UIView {
-        view_transitionType = .reveal
+        view_transitionType = SLCViewWalkerTransition.reveal
         return self
     }
     
     public var transitionMoveIn: UIView {
-        view_transitionType = .moveIn
+        view_transitionType = SLCViewWalkerTransition.moveIn
         return self
     }
     
     public var transitionCube: UIView {
-        view_transitionType = .cube
+        view_transitionType = SLCViewWalkerTransition.cube
         return self
     }
     
     public var transitionSuck: UIView {
-        view_transitionType = .suck
+        view_transitionType = SLCViewWalkerTransition.suck
         return self
     }
     
     public var transitionRipple: UIView {
-        view_transitionType = .ripple
+        view_transitionType = SLCViewWalkerTransition.ripple
         return self
     }
     
     public var transitionCurl: UIView {
-        view_transitionType = .curl
+        view_transitionType = SLCViewWalkerTransition.curl
         view_transitionOptions = UIView.AnimationOptions.transitionCurlUp
         return self
     }
     
     public var transitionUnCurl: UIView {
-        view_transitionType = .unCurl
+        view_transitionType = SLCViewWalkerTransition.unCurl
         view_transitionOptions = UIView.AnimationOptions.transitionCurlDown
         return self
     }
     
     public var transitionFlip: UIView {
-        view_transitionType = .flip
+        view_transitionType = SLCViewWalkerTransition.flip
         return self
     }
     
     public var transitionHollowOpen: UIView {
-        view_transitionType = .hollowOpen
+        view_transitionType = SLCViewWalkerTransition.hollowOpen
         return self
     }
     
     public var transitionHollowClose: UIView {
-        view_transitionType = .hollowClose
+        view_transitionType = SLCViewWalkerTransition.hollowClose
         return self
     }
     
@@ -665,21 +665,21 @@ public extension UIView
         
         view_from = nil
         view_to = nil
-        view_theWalker = .makePosition
-        view_easeType = .easeLiner
+        view_theWalker = SLCWalker.makePosition
+        view_easeType = SLCViewEasy.easeLiner
         view_spring = false
-        view_transitionType = .fade
+        view_transitionType = SLCViewWalkerTransition.fade
         view_isTransitionContent = false
-        view_transitionOptions = .curveLinear
+        view_transitionOptions = UIView.AnimationOptions.curveLinear
     }
     
     private func slc_startWalker()
     {
         switch view_theWalker
         {
-        case .makeSize:
+        case SLCWalker.makeSize:
         
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -708,7 +708,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -737,7 +737,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -766,7 +766,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -796,9 +796,9 @@ public extension UIView
                 }
             }
          
-        case .makePosition:
+        case SLCWalker.makePosition:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -827,7 +827,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -856,7 +856,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -885,7 +885,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -915,9 +915,9 @@ public extension UIView
                 }
             }
             
-        case .makeX:
+        case SLCWalker.makeX:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -946,7 +946,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -975,7 +975,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -1004,7 +1004,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -1035,9 +1035,9 @@ public extension UIView
             }
             
         
-        case .makeY:
+        case SLCWalker.makeY:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -1066,7 +1066,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -1095,7 +1095,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -1124,7 +1124,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -1154,9 +1154,9 @@ public extension UIView
                 }
             }
            
-        case .makeWidth:
+        case SLCWalker.makeWidth:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -1185,7 +1185,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -1214,7 +1214,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -1243,7 +1243,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -1274,9 +1274,9 @@ public extension UIView
             }
             
         
-        case .makeHeight:
+        case SLCWalker.makeHeight:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -1305,7 +1305,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -1334,7 +1334,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -1363,7 +1363,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -1394,9 +1394,9 @@ public extension UIView
             }
             
             
-        case .makeScale:
+        case SLCWalker.makeScale:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -1425,7 +1425,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -1454,7 +1454,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -1483,7 +1483,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -1514,9 +1514,9 @@ public extension UIView
             }
             
             
-        case .makeScaleX:
+        case SLCWalker.makeScaleX:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -1545,7 +1545,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -1574,7 +1574,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -1603,7 +1603,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -1633,9 +1633,9 @@ public extension UIView
                 }
             }
             
-        case .makeScaleY:
+        case SLCWalker.makeScaleY:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -1664,7 +1664,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -1693,7 +1693,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -1722,7 +1722,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -1753,9 +1753,9 @@ public extension UIView
             }
             
         
-        case .makeRotationX:
+        case SLCWalker.makeRotationX:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -1784,7 +1784,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -1813,7 +1813,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -1842,7 +1842,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -1873,9 +1873,9 @@ public extension UIView
             }
             
             
-        case .makeRotationY:
+        case SLCWalker.makeRotationY:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -1904,7 +1904,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -1933,7 +1933,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -1962,7 +1962,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -1993,9 +1993,9 @@ public extension UIView
             }
             
             
-        case .makeRotationZ:
+        case SLCWalker.makeRotationZ:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -2024,7 +2024,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -2053,7 +2053,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -2082,7 +2082,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -2113,9 +2113,9 @@ public extension UIView
             }
             
          
-        case .makeBackground:
+        case SLCWalker.makeBackground:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -2144,7 +2144,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -2173,7 +2173,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -2202,7 +2202,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -2233,9 +2233,9 @@ public extension UIView
             }
             
         
-        case .makeOpacity:
+        case SLCWalker.makeOpacity:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -2264,7 +2264,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -2293,7 +2293,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -2322,7 +2322,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -2353,9 +2353,9 @@ public extension UIView
             }
             
             
-        case .makeCornerRadius:
+        case SLCWalker.makeCornerRadius:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -2384,7 +2384,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -2413,7 +2413,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -2442,7 +2442,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -2474,9 +2474,9 @@ public extension UIView
          
             
             
-        case .makeStrokeEnd:
+        case SLCWalker.makeStrokeEnd:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -2505,7 +2505,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -2534,7 +2534,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -2563,7 +2563,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -2595,9 +2595,9 @@ public extension UIView
          
             
             
-        case .makeContent:
+        case SLCWalker.makeContent:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -2626,7 +2626,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -2655,7 +2655,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -2684,7 +2684,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -2715,9 +2715,9 @@ public extension UIView
             }
          
             
-        case .makeBorderWidth:
+        case SLCWalker.makeBorderWidth:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -2746,7 +2746,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -2775,7 +2775,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -2804,7 +2804,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -2835,9 +2835,9 @@ public extension UIView
             }
           
             
-        case .makeShadowColor:
+        case SLCWalker.makeShadowColor:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -2866,7 +2866,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -2895,7 +2895,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -2924,7 +2924,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -2955,9 +2955,9 @@ public extension UIView
             }
             
             
-        case .makeShadowOffset:
+        case SLCWalker.makeShadowOffset:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -2986,7 +2986,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -3015,7 +3015,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -3044,7 +3044,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -3075,9 +3075,9 @@ public extension UIView
             }
             
         
-        case .makeShadowOpacity:
+        case SLCWalker.makeShadowOpacity:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -3106,7 +3106,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -3135,7 +3135,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -3164,7 +3164,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -3195,9 +3195,9 @@ public extension UIView
             }
             
             
-        case .makeShadowRadius:
+        case SLCWalker.makeShadowRadius:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -3226,7 +3226,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -3255,7 +3255,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -3284,7 +3284,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -3315,9 +3315,9 @@ public extension UIView
             }
             
             
-        case .takeFrame:
+        case SLCWalker.takeFrame:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -3346,7 +3346,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -3375,7 +3375,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -3404,7 +3404,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -3435,9 +3435,9 @@ public extension UIView
             }
             
            
-        case .takeLeading:
+        case SLCWalker.takeLeading:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -3466,7 +3466,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -3495,7 +3495,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -3524,7 +3524,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -3555,9 +3555,9 @@ public extension UIView
             }
             
             
-        case .takeTraing:
+        case SLCWalker.takeTraing:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -3586,7 +3586,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -3615,7 +3615,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -3644,7 +3644,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -3675,9 +3675,9 @@ public extension UIView
             }
             
             
-        case .takeTop:
+        case SLCWalker.takeTop:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -3706,7 +3706,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -3735,7 +3735,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -3764,7 +3764,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -3794,9 +3794,9 @@ public extension UIView
                 }
             }
             
-        case .takeBottom:
+        case SLCWalker.takeBottom:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -3825,7 +3825,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -3854,7 +3854,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -3883,7 +3883,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -3914,9 +3914,9 @@ public extension UIView
             }
             
             
-        case .takeWidth:
+        case SLCWalker.takeWidth:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -3945,7 +3945,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -3974,7 +3974,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -4003,7 +4003,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -4034,9 +4034,9 @@ public extension UIView
             }
             
             
-        case .takeHeight:
+        case SLCWalker.takeHeight:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -4065,7 +4065,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -4094,7 +4094,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -4123,7 +4123,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -4154,9 +4154,9 @@ public extension UIView
             }
             
             
-        case .takeSize:
+        case SLCWalker.takeSize:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -4185,7 +4185,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -4214,7 +4214,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -4243,7 +4243,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -4274,9 +4274,9 @@ public extension UIView
             }
             
             
-        case .moveX:
+        case SLCWalker.moveX:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -4305,7 +4305,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -4334,7 +4334,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -4363,7 +4363,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -4394,9 +4394,9 @@ public extension UIView
             }
             
             
-        case .moveY:
+        case SLCWalker.moveY:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -4425,7 +4425,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -4454,7 +4454,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -4483,7 +4483,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -4514,9 +4514,9 @@ public extension UIView
             }
             
             
-        case .moveXY:
+        case SLCWalker.moveXY:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -4545,7 +4545,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -4574,7 +4574,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -4603,7 +4603,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -4634,9 +4634,9 @@ public extension UIView
             }
             
             
-        case .moveWidth:
+        case SLCWalker.moveWidth:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -4665,7 +4665,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -4694,7 +4694,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -4723,7 +4723,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -4754,9 +4754,9 @@ public extension UIView
             }
             
         
-        case .moveHeight:
+        case SLCWalker.moveHeight:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -4785,7 +4785,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -4814,7 +4814,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -4843,7 +4843,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -4874,9 +4874,9 @@ public extension UIView
             }
             
             
-        case .moveSize:
+        case SLCWalker.moveSize:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -4905,7 +4905,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -4934,7 +4934,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -4963,7 +4963,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -4994,9 +4994,9 @@ public extension UIView
             }
             
             
-        case .addLeading:
+        case SLCWalker.addLeading:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -5025,7 +5025,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -5054,7 +5054,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -5083,7 +5083,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -5114,9 +5114,9 @@ public extension UIView
             }
             
             
-        case .addTraing:
+        case SLCWalker.addTraing:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -5145,7 +5145,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -5174,7 +5174,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -5203,7 +5203,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -5234,9 +5234,9 @@ public extension UIView
             }
             
             
-        case .addTop:
+        case SLCWalker.addTop:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -5265,7 +5265,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -5294,7 +5294,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -5323,7 +5323,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -5354,9 +5354,9 @@ public extension UIView
             }
             
             
-        case .addBottom:
+        case SLCWalker.addBottom:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -5385,7 +5385,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -5414,7 +5414,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -5443,7 +5443,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -5474,9 +5474,9 @@ public extension UIView
             }
             
             
-        case .addWidth:
+        case SLCWalker.addWidth:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -5505,7 +5505,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -5534,7 +5534,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -5563,7 +5563,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -5594,9 +5594,9 @@ public extension UIView
             }
             
         
-        case .addHeight:
+        case SLCWalker.addHeight:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -5625,7 +5625,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -5654,7 +5654,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -5683,7 +5683,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -5715,9 +5715,9 @@ public extension UIView
             
         
             
-        case .addSize:
+        case SLCWalker.addSize:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -5746,7 +5746,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -5775,7 +5775,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -5804,7 +5804,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
@@ -5835,35 +5835,35 @@ public extension UIView
             }
             
         
-        case .transition:
+        case SLCWalker.transition:
             
             if view_isTransitionContent
             {
                 if view_reverse
                 {
-                    if view_transitionOptions == .curveLinear
+                    if view_transitionOptions == UIView.AnimationOptions.curveLinear
                     {
-                        view_transitionOptions = [.curveLinear, .autoreverse, .repeat];
+                        view_transitionOptions = [UIView.AnimationOptions.curveLinear, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat];
                     }
-                    else if view_transitionOptions == .curveEaseInOut
+                    else if view_transitionOptions == UIView.AnimationOptions.curveEaseInOut
                     {
-                        view_transitionOptions = [.curveEaseInOut, .autoreverse, .repeat];
+                        view_transitionOptions = [UIView.AnimationOptions.curveEaseInOut, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat];
                     }
-                    else if view_transitionOptions == .curveEaseIn
+                    else if view_transitionOptions == UIView.AnimationOptions.curveEaseIn
                     {
-                        view_transitionOptions = [.curveEaseIn, .autoreverse, .repeat];
+                        view_transitionOptions = [UIView.AnimationOptions.curveEaseIn, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat];
                     }
-                    else if view_transitionOptions == .curveEaseOut
+                    else if view_transitionOptions == UIView.AnimationOptions.curveEaseOut
                     {
-                        view_transitionOptions = [.curveEaseOut, .autoreverse, .repeat];
+                        view_transitionOptions = [UIView.AnimationOptions.curveEaseOut, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat];
                     }
-                    else if view_transitionOptions == .transitionCurlUp
+                    else if view_transitionOptions == UIView.AnimationOptions.transitionCurlUp
                     {
-                        view_transitionOptions = [.transitionCurlUp, .autoreverse, .repeat];
+                        view_transitionOptions = [UIView.AnimationOptions.transitionCurlUp, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat];
                     }
-                    else if view_transitionOptions == .transitionCurlDown
+                    else if view_transitionOptions == UIView.AnimationOptions.transitionCurlDown
                     {
-                        view_transitionOptions = [.transitionCurlDown, .autoreverse, .repeat];
+                        view_transitionOptions = [UIView.AnimationOptions.transitionCurlDown, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat];
                     }
                 }
                 
@@ -5884,11 +5884,11 @@ public extension UIView
             }
             else
             {
-                if view_easeType == .easeLiner
+                if view_easeType == SLCViewEasy.easeLiner
                 {
                     switch view_transitionType
                     {
-                    case .fade:
+                    case SLCViewWalkerTransition.fade:
                         
                         if let value = view_to
                         {
@@ -5901,7 +5901,7 @@ public extension UIView
                             }
                         }
                         
-                    case .push:
+                    case SLCViewWalkerTransition.push:
                         
                         if let value = view_to
                         {
@@ -5915,7 +5915,7 @@ public extension UIView
                         }
                         
                         
-                    case .reveal:
+                    case SLCViewWalkerTransition.reveal:
                         
                         if let value = view_to
                         {
@@ -5928,7 +5928,7 @@ public extension UIView
                             }
                         }
                         
-                    case .moveIn:
+                    case SLCViewWalkerTransition.moveIn:
                         
                         if let value = view_to
                         {
@@ -5941,7 +5941,7 @@ public extension UIView
                             }
                         }
                         
-                    case .cube:
+                    case SLCViewWalkerTransition.cube:
                         
                         if let value = view_to
                         {
@@ -5954,7 +5954,7 @@ public extension UIView
                             }
                         }
                         
-                    case .suck:
+                    case SLCViewWalkerTransition.suck:
                         
                         if let value = view_to
                         {
@@ -5967,7 +5967,7 @@ public extension UIView
                             }
                         }
                         
-                    case .ripple:
+                    case SLCViewWalkerTransition.ripple:
                         
                         if let value = view_to
                         {
@@ -5980,7 +5980,7 @@ public extension UIView
                             }
                         }
                         
-                    case .curl:
+                    case SLCViewWalkerTransition.curl:
                         
                         if let value = view_to
                         {
@@ -5993,7 +5993,7 @@ public extension UIView
                             }
                         }
                         
-                    case .unCurl:
+                    case SLCViewWalkerTransition.unCurl:
                         
                         if let value = view_to
                         {
@@ -6006,7 +6006,7 @@ public extension UIView
                             }
                         }
                         
-                    case .flip:
+                    case SLCViewWalkerTransition.flip:
                         
                         if let value = view_to
                         {
@@ -6019,7 +6019,7 @@ public extension UIView
                             }
                         }
                         
-                    case .hollowOpen:
+                    case SLCViewWalkerTransition.hollowOpen:
                         
                         if let value = view_to
                         {
@@ -6032,7 +6032,7 @@ public extension UIView
                             }
                         }
                         
-                    case .hollowClose:
+                    case SLCViewWalkerTransition.hollowClose:
                         
                         if let value = view_to
                         {
@@ -6046,11 +6046,11 @@ public extension UIView
                         }
                     }
                 }
-                else if view_easeType == .easeIn
+                else if view_easeType == SLCViewEasy.easeIn
                 {
                     switch view_transitionType
                     {
-                    case .fade:
+                    case SLCViewWalkerTransition.fade:
                         
                         if let value = view_to
                         {
@@ -6063,7 +6063,7 @@ public extension UIView
                             }
                         }
                         
-                    case .push:
+                    case SLCViewWalkerTransition.push:
                         
                         if let value = view_to
                         {
@@ -6077,7 +6077,7 @@ public extension UIView
                         }
                         
                         
-                    case .reveal:
+                    case SLCViewWalkerTransition.reveal:
                         
                         if let value = view_to
                         {
@@ -6090,7 +6090,7 @@ public extension UIView
                             }
                         }
                         
-                    case .moveIn:
+                    case SLCViewWalkerTransition.moveIn:
                         
                         if let value = view_to
                         {
@@ -6103,7 +6103,7 @@ public extension UIView
                             }
                         }
                         
-                    case .cube:
+                    case SLCViewWalkerTransition.cube:
                         
                         if let value = view_to
                         {
@@ -6116,7 +6116,7 @@ public extension UIView
                             }
                         }
                         
-                    case .suck:
+                    case SLCViewWalkerTransition.suck:
                         
                         if let value = view_to
                         {
@@ -6129,7 +6129,7 @@ public extension UIView
                             }
                         }
                         
-                    case .ripple:
+                    case SLCViewWalkerTransition.ripple:
                         
                         if let value = view_to
                         {
@@ -6142,7 +6142,7 @@ public extension UIView
                             }
                         }
                         
-                    case .curl:
+                    case SLCViewWalkerTransition.curl:
                         
                         if let value = view_to
                         {
@@ -6155,7 +6155,7 @@ public extension UIView
                             }
                         }
                         
-                    case .unCurl:
+                    case SLCViewWalkerTransition.unCurl:
                         
                         if let value = view_to
                         {
@@ -6168,7 +6168,7 @@ public extension UIView
                             }
                         }
                         
-                    case .flip:
+                    case SLCViewWalkerTransition.flip:
                         
                         if let value = view_to
                         {
@@ -6181,7 +6181,7 @@ public extension UIView
                             }
                         }
                         
-                    case .hollowOpen:
+                    case SLCViewWalkerTransition.hollowOpen:
                         
                         if let value = view_to
                         {
@@ -6194,7 +6194,7 @@ public extension UIView
                             }
                         }
                         
-                    case .hollowClose:
+                    case SLCViewWalkerTransition.hollowClose:
                         
                         if let value = view_to
                         {
@@ -6208,11 +6208,11 @@ public extension UIView
                         }
                     }
                 }
-                else if view_easeType == .easeOut
+                else if view_easeType == SLCViewEasy.easeOut
                 {
                     switch view_transitionType
                     {
-                    case .fade:
+                    case SLCViewWalkerTransition.fade:
                         
                         if let value = view_to
                         {
@@ -6225,7 +6225,7 @@ public extension UIView
                             }
                         }
                         
-                    case .push:
+                    case SLCViewWalkerTransition.push:
                         
                         if let value = view_to
                         {
@@ -6239,7 +6239,7 @@ public extension UIView
                         }
                         
                         
-                    case .reveal:
+                    case SLCViewWalkerTransition.reveal:
                         
                         if let value = view_to
                         {
@@ -6252,7 +6252,7 @@ public extension UIView
                             }
                         }
                         
-                    case .moveIn:
+                    case SLCViewWalkerTransition.moveIn:
                         
                         if let value = view_to
                         {
@@ -6265,7 +6265,7 @@ public extension UIView
                             }
                         }
                         
-                    case .cube:
+                    case SLCViewWalkerTransition.cube:
                         
                         if let value = view_to
                         {
@@ -6278,7 +6278,7 @@ public extension UIView
                             }
                         }
                         
-                    case .suck:
+                    case SLCViewWalkerTransition.suck:
                         
                         if let value = view_to
                         {
@@ -6291,7 +6291,7 @@ public extension UIView
                             }
                         }
                         
-                    case .ripple:
+                    case SLCViewWalkerTransition.ripple:
                         
                         if let value = view_to
                         {
@@ -6304,7 +6304,7 @@ public extension UIView
                             }
                         }
                         
-                    case .curl:
+                    case SLCViewWalkerTransition.curl:
                         
                         if let value = view_to
                         {
@@ -6317,7 +6317,7 @@ public extension UIView
                             }
                         }
                         
-                    case .unCurl:
+                    case SLCViewWalkerTransition.unCurl:
                         
                         if let value = view_to
                         {
@@ -6330,7 +6330,7 @@ public extension UIView
                             }
                         }
                         
-                    case .flip:
+                    case SLCViewWalkerTransition.flip:
                         
                         if let value = view_to
                         {
@@ -6343,7 +6343,7 @@ public extension UIView
                             }
                         }
                         
-                    case .hollowOpen:
+                    case SLCViewWalkerTransition.hollowOpen:
                         
                         if let value = view_to
                         {
@@ -6356,7 +6356,7 @@ public extension UIView
                             }
                         }
                         
-                    case .hollowClose:
+                    case SLCViewWalkerTransition.hollowClose:
                         
                         if let value = view_to
                         {
@@ -6370,11 +6370,11 @@ public extension UIView
                         }
                     }
                 }
-                else if view_easeType == .easeInOut
+                else if view_easeType == SLCViewEasy.easeInOut
                 {
                     switch view_transitionType
                     {
-                    case .fade:
+                    case SLCViewWalkerTransition.fade:
                         
                         if let value = view_to
                         {
@@ -6387,7 +6387,7 @@ public extension UIView
                             }
                         }
                         
-                    case .push:
+                    case SLCViewWalkerTransition.push:
                         
                         if let value = view_to
                         {
@@ -6401,7 +6401,7 @@ public extension UIView
                         }
                         
                         
-                    case .reveal:
+                    case SLCViewWalkerTransition.reveal:
                         
                         if let value = view_to
                         {
@@ -6414,7 +6414,7 @@ public extension UIView
                             }
                         }
                         
-                    case .moveIn:
+                    case SLCViewWalkerTransition.moveIn:
                         
                         if let value = view_to
                         {
@@ -6427,7 +6427,7 @@ public extension UIView
                             }
                         }
                         
-                    case .cube:
+                    case SLCViewWalkerTransition.cube:
                         
                         if let value = view_to
                         {
@@ -6440,7 +6440,7 @@ public extension UIView
                             }
                         }
                         
-                    case .suck:
+                    case SLCViewWalkerTransition.suck:
                         
                         if let value = view_to
                         {
@@ -6453,7 +6453,7 @@ public extension UIView
                             }
                         }
                         
-                    case .ripple:
+                    case SLCViewWalkerTransition.ripple:
                         
                         if let value = view_to
                         {
@@ -6466,7 +6466,7 @@ public extension UIView
                             }
                         }
                         
-                    case .curl:
+                    case SLCViewWalkerTransition.curl:
                         
                         if let value = view_to
                         {
@@ -6479,7 +6479,7 @@ public extension UIView
                             }
                         }
                         
-                    case .unCurl:
+                    case SLCViewWalkerTransition.unCurl:
                         
                         if let value = view_to
                         {
@@ -6492,7 +6492,7 @@ public extension UIView
                             }
                         }
                         
-                    case .flip:
+                    case SLCViewWalkerTransition.flip:
                         
                         if let value = view_to
                         {
@@ -6505,7 +6505,7 @@ public extension UIView
                             }
                         }
                         
-                    case .hollowOpen:
+                    case SLCViewWalkerTransition.hollowOpen:
                         
                         if let value = view_to
                         {
@@ -6518,7 +6518,7 @@ public extension UIView
                             }
                         }
                         
-                    case .hollowClose:
+                    case SLCViewWalkerTransition.hollowClose:
                         
                         if let value = view_to
                         {
@@ -6535,9 +6535,9 @@ public extension UIView
             }
             
             
-        case .path:
+        case SLCWalker.path:
             
-            if view_easeType == .easeInOut
+            if view_easeType == SLCViewEasy.easeInOut
             {
                 if view_spring
                 {
@@ -6566,7 +6566,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeIn
+            else if view_easeType == SLCViewEasy.easeIn
             {
                 if view_spring
                 {
@@ -6595,7 +6595,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeOut
+            else if view_easeType == SLCViewEasy.easeOut
             {
                 if view_spring
                 {
@@ -6624,7 +6624,7 @@ public extension UIView
                     }
                 }
             }
-            else if view_easeType == .easeLiner
+            else if view_easeType == SLCViewEasy.easeLiner
             {
                 if view_spring
                 {
