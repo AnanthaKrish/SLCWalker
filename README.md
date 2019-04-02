@@ -31,9 +31,27 @@
 
 注: 如果没有特殊注释,则表示参数适用于所有类型.
 
-## 使用.(暂未pod)
+## 使用.
+
+```
+ pod 'SLCWalker'
+ 
+```
+1. 对于调用顺序有简单要求, 以make,take,move或者add等开始,以animate结束(对于collectionView或者tableView是以reloadDataWithDancer结束),其他在中间无特殊顺序要求. 例如:
+```swift
+
+self.view.moveX(-100).easeLiner.delay(2).reverses(YES).animate(2);
+
+collectionView.makeScale(0.01).itemDuration(2).itemDelay(0.1).spring.reloadDataWithDancer();
+```
 
 UIView和CALayer同样适用.
 
 OC和Demo请移步[SLCDancer](https://github.com/WeiKunChao/SLCDancer).使用方法完全相同.
+
+## 版本
+1.0.5 初次确定版本.
+1.0.6 增加UICollectionView和UITableView动画.
+
+
 
