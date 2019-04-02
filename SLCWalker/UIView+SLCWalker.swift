@@ -47,12 +47,6 @@ private enum SLCViewEasy: Int
     case easeInOut = 0, easeIn, easeOut, easeLiner
 }
 
-private enum SLCViewWalkerTransition: Int
-{
-    case fade = 0, push, reveal, moveIn, cube, suck, ripple, curl, unCurl,
-    flip, hollowOpen, hollowClose
-}
-
 private var view_delay: TimeInterval = 0.0
 private var view_repeat: Int = 1
 private var view_reverse: Bool = false
@@ -64,11 +58,10 @@ private var view_to: Any? = nil
 private var view_theWalker: SLCWalker = SLCWalker.makePosition
 private var view_easeType: SLCViewEasy = SLCViewEasy.easeLiner
 private var view_spring: Bool = false
-private var view_transitionType: SLCViewWalkerTransition = SLCViewWalkerTransition.fade
 private var view_isTransitionContent: Bool = false
 private var view_transitionOptions: UIView.AnimationOptions = UIView.AnimationOptions.curveLinear
 
-public extension UIView
+extension UIView
 {
     // MARK: MAKE 全部以中心点为依据
     // Function MAKE, based on the center.
@@ -570,72 +563,49 @@ public extension UIView
     
     
     
-    // MARK: 转场动画样式 (只适用于TRANSITION, spring无效. transitionFrom时只有Curl和UnCurl有效)
-    // Transition animation style (only for TRANSITION, spring is unavailable, Only Curl and UnCurl are valid when transitionFrom)
-    public var transitionFade: UIView {
-        view_transitionType = SLCViewWalkerTransition.fade
+    // MARK: 转场动画样式 (只适用于TRANSITION, spring无效. 其他通过layer去操作)
+    // Transition animation style (only for TRANSITION, spring is unavailable, Others operate through the layer)
+    public var transitionFlipFromLeft: UIView {
+        view_transitionOptions = UIView.AnimationOptions.transitionFlipFromLeft
+        view_theWalker = SLCWalker.transition
         return self
     }
     
-    public var transitionPush: UIView {
-        view_transitionType = SLCViewWalkerTransition.push
+    public var transitionFlipFromRight: UIView {
+        view_transitionOptions = UIView.AnimationOptions.transitionFlipFromRight
+        view_theWalker = SLCWalker.transition
         return self
     }
     
-    public var transitionReveal: UIView {
-        view_transitionType = SLCViewWalkerTransition.reveal
-        return self
-    }
-    
-    public var transitionMoveIn: UIView {
-        view_transitionType = SLCViewWalkerTransition.moveIn
-        return self
-    }
-    
-    public var transitionCube: UIView {
-        view_transitionType = SLCViewWalkerTransition.cube
-        return self
-    }
-    
-    public var transitionSuck: UIView {
-        view_transitionType = SLCViewWalkerTransition.suck
-        return self
-    }
-    
-    public var transitionRipple: UIView {
-        view_transitionType = SLCViewWalkerTransition.ripple
-        return self
-    }
-    
-    public var transitionCurl: UIView {
-        view_transitionType = SLCViewWalkerTransition.curl
+    public var transitionCurlUp: UIView {
         view_transitionOptions = UIView.AnimationOptions.transitionCurlUp
+        view_theWalker = SLCWalker.transition
         return self
     }
     
-    public var transitionUnCurl: UIView {
-        view_transitionType = SLCViewWalkerTransition.unCurl
+    public var transitionCurlDown: UIView {
         view_transitionOptions = UIView.AnimationOptions.transitionCurlDown
+        view_theWalker = SLCWalker.transition
         return self
     }
     
-    public var transitionFlip: UIView {
-        view_transitionType = SLCViewWalkerTransition.flip
+    public var transitionCrossDissolve: UIView {
+        view_transitionOptions = UIView.AnimationOptions.transitionCrossDissolve
+        view_theWalker = SLCWalker.transition
         return self
     }
     
-    public var transitionHollowOpen: UIView {
-        view_transitionType = SLCViewWalkerTransition.hollowOpen
+    public var transitionFlipFromTop: UIView {
+        view_transitionOptions = UIView.AnimationOptions.transitionFlipFromTop
+        view_theWalker = SLCWalker.transition
         return self
     }
     
-    public var transitionHollowClose: UIView {
-        view_transitionType = SLCViewWalkerTransition.hollowClose
+    public var transitionFlipFromBottom: UIView {
+        view_transitionOptions = UIView.AnimationOptions.transitionFlipFromBottom
+        view_theWalker = SLCWalker.transition
         return self
     }
-    
-    
-    
     
     
     
@@ -650,6 +620,11 @@ public extension UIView
     public func removeWalkers()
     {
         self.layer.removeWalkers()
+    }
+    
+    public func reloadWalker()
+    {
+        self.layer.reloadWalker()
     }
     
     
@@ -668,7 +643,6 @@ public extension UIView
         view_theWalker = SLCWalker.makePosition
         view_easeType = SLCViewEasy.easeLiner
         view_spring = false
-        view_transitionType = SLCViewWalkerTransition.fade
         view_isTransitionContent = false
         view_transitionOptions = UIView.AnimationOptions.curveLinear
     }
@@ -5837,703 +5811,69 @@ public extension UIView
         
         case SLCWalker.transition:
             
-            if view_isTransitionContent
+            if view_reverse
             {
-                if view_reverse
+                if view_transitionOptions == UIView.AnimationOptions.transitionFlipFromLeft
                 {
-                    if view_transitionOptions == UIView.AnimationOptions.curveLinear
-                    {
-                        view_transitionOptions = [UIView.AnimationOptions.curveLinear, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat];
-                    }
-                    else if view_transitionOptions == UIView.AnimationOptions.curveEaseInOut
-                    {
-                        view_transitionOptions = [UIView.AnimationOptions.curveEaseInOut, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat];
-                    }
-                    else if view_transitionOptions == UIView.AnimationOptions.curveEaseIn
-                    {
-                        view_transitionOptions = [UIView.AnimationOptions.curveEaseIn, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat];
-                    }
-                    else if view_transitionOptions == UIView.AnimationOptions.curveEaseOut
-                    {
-                        view_transitionOptions = [UIView.AnimationOptions.curveEaseOut, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat];
-                    }
-                    else if view_transitionOptions == UIView.AnimationOptions.transitionCurlUp
-                    {
-                        view_transitionOptions = [UIView.AnimationOptions.transitionCurlUp, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat];
-                    }
-                    else if view_transitionOptions == UIView.AnimationOptions.transitionCurlDown
-                    {
-                        view_transitionOptions = [UIView.AnimationOptions.transitionCurlDown, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat];
-                    }
+                    view_transitionOptions = [UIView.AnimationOptions.transitionFlipFromLeft, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat]
                 }
-                
-                if let value1 = view_from, let value2 = view_to
+                else if view_transitionOptions == UIView.AnimationOptions.transitionFlipFromRight
                 {
-                    UIView.transition(from: value1 as! UIView,
-                                      to: value2 as! UIView,
-                                      duration: view_animate,
-                                      options: view_transitionOptions) { (success) in
-                        
-                                        view_isTransitionContent = false
-                                        if let va = self.completion
-                                        {
-                                            va(SLCWalker.transition)
-                                        }
-                    }
+                    view_transitionOptions = [UIView.AnimationOptions.transitionFlipFromRight, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat]
                 }
-            }
-            else
-            {
-                if view_easeType == SLCViewEasy.easeLiner
+                else if view_transitionOptions == UIView.AnimationOptions.transitionFlipFromTop
                 {
-                    switch view_transitionType
-                    {
-                    case SLCViewWalkerTransition.fade:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeLiner.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionFade.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.push:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeLiner.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionPush.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                        
-                    case SLCViewWalkerTransition.reveal:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeLiner.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionReveal.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.moveIn:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeLiner.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionMoveIn.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.cube:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeLiner.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionCube.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.suck:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeLiner.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionSuck.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.ripple:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeLiner.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionRipple.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.curl:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeLiner.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionCurl.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.unCurl:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeLiner.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionUnCurl.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.flip:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeLiner.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionFlip.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.hollowOpen:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeLiner.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionHollowOpen.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.hollowClose:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeLiner.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionHollowClose.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                    }
+                    view_transitionOptions = [UIView.AnimationOptions.transitionFlipFromTop, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat]
                 }
-                else if view_easeType == SLCViewEasy.easeIn
+                else if view_transitionOptions == UIView.AnimationOptions.transitionFlipFromBottom
                 {
-                    switch view_transitionType
-                    {
-                    case SLCViewWalkerTransition.fade:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeIn.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionFade.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.push:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeIn.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionPush.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                        
-                    case SLCViewWalkerTransition.reveal:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeIn.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionReveal.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.moveIn:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeIn.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionMoveIn.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.cube:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeIn.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionCube.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.suck:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeIn.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionSuck.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.ripple:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeIn.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionRipple.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.curl:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeIn.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionCurl.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.unCurl:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeIn.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionUnCurl.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.flip:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeIn.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionFlip.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.hollowOpen:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeIn.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionHollowOpen.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.hollowClose:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeIn.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionHollowClose.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                    }
+                    view_transitionOptions = [UIView.AnimationOptions.transitionFlipFromBottom, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat]
                 }
-                else if view_easeType == SLCViewEasy.easeOut
+                else if view_transitionOptions == UIView.AnimationOptions.transitionCurlUp
                 {
-                    switch view_transitionType
-                    {
-                    case SLCViewWalkerTransition.fade:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionFade.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.push:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionPush.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                        
-                    case SLCViewWalkerTransition.reveal:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionReveal.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.moveIn:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionMoveIn.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.cube:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionCube.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.suck:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionSuck.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.ripple:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionRipple.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.curl:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionCurl.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.unCurl:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionUnCurl.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.flip:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionFlip.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.hollowOpen:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionHollowOpen.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.hollowClose:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionHollowClose.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                    }
+                    view_transitionOptions = [UIView.AnimationOptions.transitionCurlUp, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat]
                 }
-                else if view_easeType == SLCViewEasy.easeInOut
+                else if view_transitionOptions == UIView.AnimationOptions.transitionCurlDown
                 {
-                    switch view_transitionType
-                    {
-                    case SLCViewWalkerTransition.fade:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeInOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionFade.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.push:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeInOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionPush.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                        
-                    case SLCViewWalkerTransition.reveal:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeInOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionReveal.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.moveIn:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeInOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionMoveIn.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.cube:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeInOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionCube.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.suck:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeInOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionSuck.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.ripple:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeInOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionRipple.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.curl:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeInOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionCurl.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.unCurl:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeInOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionUnCurl.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.flip:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeInOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionFlip.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.hollowOpen:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeInOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionHollowOpen.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                        
-                    case SLCViewWalkerTransition.hollowClose:
-                        
-                        if let value = view_to
-                        {
-                            self.layer.transitionDir(value as! SLCWalkerTransitionDirection).easeInOut.repeatNumber(view_repeat).reverses(view_reverse).delay(view_delay).transitionHollowClose.animate(view_animate).completion = { atype in
-                                
-                                if self.completion != nil
-                                {
-                                    self.completion!(atype)
-                                }
-                            }
-                        }
-                    }
+                    view_transitionOptions = [UIView.AnimationOptions.transitionCurlDown, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat]
+                }
+                else if view_transitionOptions == UIView.AnimationOptions.transitionCrossDissolve
+                {
+                    view_transitionOptions = [UIView.AnimationOptions.transitionCrossDissolve, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat]
                 }
             }
             
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01)
+            {
+                if view_isTransitionContent
+                {
+                    UIView.transition(from: self,
+                                      to: view_to as! UIView,
+                                      duration: view_animate,
+                                      options: view_transitionOptions,
+                                      completion: { (success) in
+                        view_isTransitionContent = false
+                        if let value = self.completion
+                        {
+                            value(SLCWalker.transition)
+                        }
+                    })
+                }
+                else
+                {
+                    UIView.transition(with: self,
+                                      duration: view_animate,
+                                      options: view_transitionOptions,
+                                      animations: nil,
+                                      completion: { (success) in
+                                        view_isTransitionContent = false
+                                        if let value = self.completion
+                                        {
+                                            value(SLCWalker.transition)
+                                        }
+                    })
+                }
+            }
             
         case SLCWalker.path:
             

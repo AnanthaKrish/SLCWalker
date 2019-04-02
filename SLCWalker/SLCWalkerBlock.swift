@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreFoundation
 
 public enum SLCWalker: Int
 {
@@ -66,6 +65,7 @@ public typealias SLCWalkerTransitionDirection = CATransitionSubtype
 public typealias SLCWalkerTransitionType = CATransitionType
 
 public typealias SLCWalkerCompletion = ((SLCWalker) -> Void)?
+public typealias SLCWalkerVoidCompletion = (() -> Void)?
 
 
 

@@ -203,7 +203,7 @@ private var my_to: Any? = nil
 private var my_viewWalkerkeyPath: String = UIViewWalkerKeyFrame
 private var my_theWalker: SLCWalker = SLCWalker.makePosition
 private var my_transitionType: SLCWalkerTransitionType = SLCWalkerTransitionTypeFade
-
+private var my_frameOrigin: CGRect = CGRect.zero;
 
 extension CALayer: CAAnimationDelegate
 {
@@ -851,226 +851,241 @@ extension CALayer: CAAnimationDelegate
     public func removeWalkers()
     {
         self.removeAllAnimations()
+        if !my_isCAanimation
+        {
+            let superLayer = self.superlayer
+            self.removeFromSuperlayer()
+            self.frame = my_frameOrigin
+            superLayer?.addSublayer(self)
+        }
     }
     
     
-    
+    public func reloadWalker()
+    {
+        self.removeWalkers()
+        self.slc_startWalker()
+    }
     
     private func slc_startWalker()
     {
-        if my_isCAanimation
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01)
         {
-            if my_animationType == SLCWalkerType.base
+            if my_isCAanimation
             {
-                let base: CABasicAnimation = slc_baseWalker(keyPath: my_currentKeyPath,
-                                                            duration: my_animateTime,
-                                                            repeatCount: Float(my_myRepeatCount),
-                                                            delay: my_delay,
-                                                            autoreverses: my_reverses,
-                                                            timing: my_timing,
-                                                            from: my_from,
-                                                            to: my_to)
-                base.delegate = self
-                self.add(base, forKey: nil)
-            }
-            else if my_animationType == SLCWalkerType.spring
-            {
-                let sp: CASpringAnimation = slc_springWalker(keyPath: my_currentKeyPath,
-                                                             duration: my_animateTime,
-                                                             repeatCount: Float(my_myRepeatCount),
-                                                             delay: my_delay,
-                                                             autoreverses: my_reverses,
-                                                             timing: my_timing,
-                                                             from: my_from,
-                                                             to: my_to)
-                sp.delegate = self
-                self.add(sp, forKey: nil)
-            }
-            else if my_animationType == SLCWalkerType.path
-            {
-                let keyframe: CAKeyframeAnimation = slc_keyframeWalker(keyPath: my_currentKeyPath,
-                                                                       duration: my_animateTime,
-                                                                       repeatCount: Float(my_myRepeatCount),
-                                                                       delay: my_delay,
-                                                                       autoreverses: my_reverses,
-                                                                       timing: my_timing,
-                                                                       path: (my_to as! CGPath))
-                keyframe.delegate = self
-                self.add(keyframe, forKey: nil)
-            }
-            else if my_animationType == SLCWalkerType.transition
-            {
-                let tr: CATransition = slc_transitionWalker(duration: my_animateTime,
-                                                            timing: my_timing,
-                                                            type: my_transitionType,
-                                                            direction: (my_to as! SLCWalkerTransitionDirection),
-                                                            repeatCount: Float(my_myRepeatCount),
-                                                            delay: my_delay,
-                                                            autoreverses: my_reverses)
-                tr.delegate = self
-                self.add(tr, forKey: nil)
-            }
-        }
-        else
-        {
-            if my_reverses
-            {
-                if my_options == UIView.AnimationOptions.curveEaseInOut
+                if my_animationType == SLCWalkerType.base
                 {
-                    my_options = [UIView.AnimationOptions.repeat, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.curveEaseInOut]
+                    let base: CABasicAnimation = slc_baseWalker(keyPath: my_currentKeyPath,
+                                                                duration: my_animateTime,
+                                                                repeatCount: Float(my_myRepeatCount),
+                                                                delay: my_delay,
+                                                                autoreverses: my_reverses,
+                                                                timing: my_timing,
+                                                                from: my_from,
+                                                                to: my_to)
+                    base.delegate = self
+                    self.add(base, forKey: nil)
                 }
-                else if my_options == UIView.AnimationOptions.curveEaseIn
+                else if my_animationType == SLCWalkerType.spring
                 {
-                    my_options = [UIView.AnimationOptions.repeat, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.curveEaseIn]
+                    let sp: CASpringAnimation = slc_springWalker(keyPath: my_currentKeyPath,
+                                                                 duration: my_animateTime,
+                                                                 repeatCount: Float(my_myRepeatCount),
+                                                                 delay: my_delay,
+                                                                 autoreverses: my_reverses,
+                                                                 timing: my_timing,
+                                                                 from: my_from,
+                                                                 to: my_to)
+                    sp.delegate = self
+                    self.add(sp, forKey: nil)
                 }
-                else if my_options == UIView.AnimationOptions.curveEaseOut
+                else if my_animationType == SLCWalkerType.path
                 {
-                    my_options = [UIView.AnimationOptions.repeat, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.curveEaseOut]
+                    let keyframe: CAKeyframeAnimation = slc_keyframeWalker(keyPath: my_currentKeyPath,
+                                                                           duration: my_animateTime,
+                                                                           repeatCount: Float(my_myRepeatCount),
+                                                                           delay: my_delay,
+                                                                           autoreverses: my_reverses,
+                                                                           timing: my_timing,
+                                                                           path: (my_to as! CGPath))
+                    keyframe.delegate = self
+                    self.add(keyframe, forKey: nil)
                 }
-                else
+                else if my_animationType == SLCWalkerType.transition
                 {
-                    my_options = [UIView.AnimationOptions.repeat, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.curveLinear]
-                }
-            }
-            
-            if my_animationType == SLCWalkerType.spring
-            {
-                let damping: CGFloat = 0.85
-                let velocity: CGFloat = 10.0
-                
-                UIView.animate(withDuration: my_animateTime,
-                               delay: my_delay,
-                               usingSpringWithDamping: damping,
-                               initialSpringVelocity: velocity,
-                               options: my_options,
-                               animations: {
-                    
-                                if my_viewWalkerkeyPath == UIViewWalkerKeyFrame
-                                {
-                                    if let value = my_to
-                                    {
-                                        self.frame = value as! CGRect
-                                    }
-                                }
-                                else if my_viewWalkerkeyPath == UIViewWalkerKeyLeading
-                                {
-                                    if let value = my_to
-                                    {
-                                        self.leading = value as! CGFloat
-                                    }
-                                }
-                                else if my_viewWalkerkeyPath == UIViewWalkerKeyTraing
-                                {
-                                    if let value = my_to
-                                    {
-                                        self.traing = value as! CGFloat
-                                    }
-                                }
-                                else if my_viewWalkerkeyPath == UIViewWalkerKeyTop
-                                {
-                                    if let value = my_to
-                                    {
-                                        self.top = value as! CGFloat
-                                    }
-                                }
-                                else if my_viewWalkerkeyPath == UIViewWalkerKeyBottom
-                                {
-                                    if let value = my_to
-                                    {
-                                        self.bottom = value as! CGFloat
-                                    }
-                                }
-                                else if my_viewWalkerkeyPath == UIViewWalkerKeyWidth
-                                {
-                                    if let value = my_to
-                                    {
-                                        self.width = value as! CGFloat
-                                    }
-                                }
-                                else if my_viewWalkerkeyPath == UIViewWalkerKeyHeight
-                                {
-                                    if let value = my_to
-                                    {
-                                        self.height = value as! CGFloat
-                                    }
-                                }
-                                else if my_viewWalkerkeyPath == UIViewWalkerKeySize
-                                {
-                                    if let value = my_to
-                                    {
-                                        self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: (value as! CGSize).width, height: (value as! CGSize).height)
-                                    }
-                                }
-
-                }) { (success) in
-                    self.slc_resetInitParams()
+                    let tr: CATransition = slc_transitionWalker(duration: my_animateTime,
+                                                                timing: my_timing,
+                                                                type: my_transitionType,
+                                                                direction: (my_to as! SLCWalkerTransitionDirection),
+                                                                repeatCount: Float(my_myRepeatCount),
+                                                                delay: my_delay,
+                                                                autoreverses: my_reverses)
+                    tr.delegate = self
+                    self.add(tr, forKey: nil)
                 }
             }
             else
             {
-                UIView.animate(withDuration: my_animateTime,
-                               delay: my_delay,
-                               options: my_options,
-                               animations: {
+                my_frameOrigin = self.frame
+                if my_reverses
+                {
+                    if my_options == UIView.AnimationOptions.curveEaseInOut
+                    {
+                        my_options = [UIView.AnimationOptions.repeat, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.curveEaseInOut]
+                    }
+                    else if my_options == UIView.AnimationOptions.curveEaseIn
+                    {
+                        my_options = [UIView.AnimationOptions.repeat, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.curveEaseIn]
+                    }
+                    else if my_options == UIView.AnimationOptions.curveEaseOut
+                    {
+                        my_options = [UIView.AnimationOptions.repeat, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.curveEaseOut]
+                    }
+                    else
+                    {
+                        my_options = [UIView.AnimationOptions.repeat, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.curveLinear]
+                    }
+                }
+                
+                if my_animationType == SLCWalkerType.spring
+                {
+                    let damping: CGFloat = 0.85
+                    let velocity: CGFloat = 10.0
                     
-                                if my_viewWalkerkeyPath == UIViewWalkerKeyFrame
-                                {
-                                    if let value = my_to
+                    UIView.animate(withDuration: my_animateTime,
+                                   delay: my_delay,
+                                   usingSpringWithDamping: damping,
+                                   initialSpringVelocity: velocity,
+                                   options: my_options,
+                                   animations: {
+                                    
+                                    if my_viewWalkerkeyPath == UIViewWalkerKeyFrame
                                     {
-                                        self.frame = value as! CGRect
+                                        if let value = my_to
+                                        {
+                                            self.frame = value as! CGRect
+                                        }
                                     }
-                                }
-                                else if my_viewWalkerkeyPath == UIViewWalkerKeyLeading
-                                {
-                                    if let value = my_to
+                                    else if my_viewWalkerkeyPath == UIViewWalkerKeyLeading
                                     {
-                                        self.leading = value as! CGFloat
+                                        if let value = my_to
+                                        {
+                                            self.leading = value as! CGFloat
+                                        }
                                     }
-                                }
-                                else if my_viewWalkerkeyPath == UIViewWalkerKeyTraing
-                                {
-                                    if let value = my_to
+                                    else if my_viewWalkerkeyPath == UIViewWalkerKeyTraing
                                     {
-                                        self.traing = value as! CGFloat
+                                        if let value = my_to
+                                        {
+                                            self.traing = value as! CGFloat
+                                        }
                                     }
-                                }
-                                else if my_viewWalkerkeyPath == UIViewWalkerKeyTop
-                                {
-                                    if let value = my_to
+                                    else if my_viewWalkerkeyPath == UIViewWalkerKeyTop
                                     {
-                                        self.top = value as! CGFloat
+                                        if let value = my_to
+                                        {
+                                            self.top = value as! CGFloat
+                                        }
                                     }
-                                }
-                                else if my_viewWalkerkeyPath == UIViewWalkerKeyBottom
-                                {
-                                    if let value = my_to
+                                    else if my_viewWalkerkeyPath == UIViewWalkerKeyBottom
                                     {
-                                        self.bottom = value as! CGFloat
+                                        if let value = my_to
+                                        {
+                                            self.bottom = value as! CGFloat
+                                        }
                                     }
-                                }
-                                else if my_viewWalkerkeyPath == UIViewWalkerKeyWidth
-                                {
-                                    if let value = my_to
+                                    else if my_viewWalkerkeyPath == UIViewWalkerKeyWidth
                                     {
-                                        self.width = value as! CGFloat
+                                        if let value = my_to
+                                        {
+                                            self.width = value as! CGFloat
+                                        }
                                     }
-                                }
-                                else if my_viewWalkerkeyPath == UIViewWalkerKeyHeight
-                                {
-                                    if let value = my_to
+                                    else if my_viewWalkerkeyPath == UIViewWalkerKeyHeight
                                     {
-                                        self.height = value as! CGFloat
+                                        if let value = my_to
+                                        {
+                                            self.height = value as! CGFloat
+                                        }
                                     }
-                                }
-                                else if my_viewWalkerkeyPath == UIViewWalkerKeySize
-                                {
-                                    if let value = my_to
+                                    else if my_viewWalkerkeyPath == UIViewWalkerKeySize
                                     {
-                                        self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: (value as! CGSize).width, height: (value as! CGSize).height)
+                                        if let value = my_to
+                                        {
+                                            self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: (value as! CGSize).width, height: (value as! CGSize).height)
+                                        }
                                     }
-                                }
-                }) { (success) in
-                    self.slc_resetInitParams()
+                                    
+                    }) { (success) in
+                        self.slc_resetInitParams()
+                    }
+                }
+                else
+                {
+                    UIView.animate(withDuration: my_animateTime,
+                                   delay: my_delay,
+                                   options: my_options,
+                                   animations: {
+                                    
+                                    if my_viewWalkerkeyPath == UIViewWalkerKeyFrame
+                                    {
+                                        if let value = my_to
+                                        {
+                                            self.frame = value as! CGRect
+                                        }
+                                    }
+                                    else if my_viewWalkerkeyPath == UIViewWalkerKeyLeading
+                                    {
+                                        if let value = my_to
+                                        {
+                                            self.leading = value as! CGFloat
+                                        }
+                                    }
+                                    else if my_viewWalkerkeyPath == UIViewWalkerKeyTraing
+                                    {
+                                        if let value = my_to
+                                        {
+                                            self.traing = value as! CGFloat
+                                        }
+                                    }
+                                    else if my_viewWalkerkeyPath == UIViewWalkerKeyTop
+                                    {
+                                        if let value = my_to
+                                        {
+                                            self.top = value as! CGFloat
+                                        }
+                                    }
+                                    else if my_viewWalkerkeyPath == UIViewWalkerKeyBottom
+                                    {
+                                        if let value = my_to
+                                        {
+                                            self.bottom = value as! CGFloat
+                                        }
+                                    }
+                                    else if my_viewWalkerkeyPath == UIViewWalkerKeyWidth
+                                    {
+                                        if let value = my_to
+                                        {
+                                            self.width = value as! CGFloat
+                                        }
+                                    }
+                                    else if my_viewWalkerkeyPath == UIViewWalkerKeyHeight
+                                    {
+                                        if let value = my_to
+                                        {
+                                            self.height = value as! CGFloat
+                                        }
+                                    }
+                                    else if my_viewWalkerkeyPath == UIViewWalkerKeySize
+                                    {
+                                        if let value = my_to
+                                        {
+                                            self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: (value as! CGSize).width, height: (value as! CGSize).height)
+                                        }
+                                    }
+                    }) { (success) in
+                        self.slc_resetInitParams()
+                    }
                 }
             }
         }
@@ -1101,5 +1116,6 @@ extension CALayer: CAAnimationDelegate
         my_viewWalkerkeyPath = UIViewWalkerKeyFrame
         my_theWalker = SLCWalker.makePosition
         my_transitionType = SLCWalkerTransitionTypeFade
+        my_frameOrigin = CGRect.zero
     }
 }
