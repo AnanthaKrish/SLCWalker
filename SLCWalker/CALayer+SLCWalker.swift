@@ -209,7 +209,7 @@ extension CALayer: CAAnimationDelegate
 {
     // MARK: MAKE 全部以中心点为依据
     // Function MAKE, based on the center.
-   @discardableResult public func makePosition(_ point: CGPoint) -> CALayer
+   @discardableResult func makePosition(_ point: CGPoint) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathPosition
@@ -219,7 +219,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeX(_ x: CGFloat) -> CALayer
+    @discardableResult func makeX(_ x: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathPositionX
@@ -229,7 +229,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeY(_ y: CGFloat) -> CALayer
+    @discardableResult func makeY(_ y: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathPositionY
@@ -239,7 +239,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeWidth(_ width: CGFloat) -> CALayer
+    @discardableResult func makeWidth(_ width: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathWidth
@@ -249,7 +249,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeHeight(_ height: CGFloat) -> CALayer
+    @discardableResult func makeHeight(_ height: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathHeight
@@ -259,7 +259,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeSize(_ size: CGSize) -> CALayer
+    @discardableResult func makeSize(_ size: CGSize) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathSize
@@ -269,7 +269,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeScale(_ scale: CGFloat) -> CALayer
+    @discardableResult func makeScale(_ scale: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathScale
@@ -279,7 +279,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeScaleX(_ scaleX: CGFloat) -> CALayer
+    @discardableResult func makeScaleX(_ scaleX: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathScaleX
@@ -289,7 +289,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeScaleY(_ scaleY: CGFloat) -> CALayer
+    @discardableResult func makeScaleY(_ scaleY: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathScaleY
@@ -299,7 +299,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeRotationX(_ rotationX: CGFloat) -> CALayer
+    @discardableResult func makeRotationX(_ rotationX: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathRotationX
@@ -309,7 +309,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeRotationY(_ rotationY: CGFloat) -> CALayer
+    @discardableResult func makeRotationY(_ rotationY: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathRotationY
@@ -319,7 +319,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeRotationZ(_ rotationZ: CGFloat) -> CALayer
+    @discardableResult func makeRotationZ(_ rotationZ: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathRotationZ
@@ -329,7 +329,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeBackground(_ background: UIColor) -> CALayer
+    @discardableResult func makeBackground(_ background: UIColor) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathBackground
@@ -339,7 +339,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeOpacity(_ opacity: CGFloat) -> CALayer
+    @discardableResult func makeOpacity(_ opacity: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathOpacity
@@ -349,7 +349,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeCornerRadius(_ corner: CGFloat) -> CALayer
+    @discardableResult func makeCornerRadius(_ corner: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathCornerRadius
@@ -359,7 +359,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeStorkeEnd(_ storleEnd: CGFloat) -> CALayer
+    @discardableResult func makeStorkeEnd(_ storleEnd: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathStrokeEnd
@@ -369,7 +369,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeContent(_ from: Any, _ to: Any) -> CALayer
+    @discardableResult func makeContent(_ from: Any, _ to: Any) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathContent
@@ -379,7 +379,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeBorderWidth(_ borderWidth: CGFloat) -> CALayer
+    @discardableResult func makeBorderWidth(_ borderWidth: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathBorderWidth
@@ -389,7 +389,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeShadowColor(_ color: UIColor) -> CALayer
+    @discardableResult func makeShadowColor(_ color: UIColor) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathShadowColor
@@ -399,7 +399,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeShadowOffset(_ shadowOffset: CGSize) -> CALayer
+    @discardableResult func makeShadowOffset(_ shadowOffset: CGSize) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathShadowOffset
@@ -409,7 +409,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeShadowOpacity(_ shadowOpacity: CGFloat) -> CALayer
+    @discardableResult func makeShadowOpacity(_ shadowOpacity: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathShadowOpacity
@@ -419,7 +419,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func makeShadowRadius(_ shadowRdius: CGFloat) -> CALayer
+    @discardableResult func makeShadowRadius(_ shadowRdius: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathShadowRadius
@@ -436,7 +436,7 @@ extension CALayer: CAAnimationDelegate
     
     // MARK: TAKE 全部以边界点为依据 (repeat无效)
     // Function TAKE, based on the boundary (parameter repeat is unavailable).
-    @discardableResult public func takeFrame(_ rect: CGRect) -> CALayer
+    @discardableResult func takeFrame(_ rect: CGRect) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -446,7 +446,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func takeLeading(_ leading: CGFloat) -> CALayer
+    @discardableResult func takeLeading(_ leading: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -456,7 +456,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func takeTraing(_ traing: CGFloat) -> CALayer
+    @discardableResult func takeTraing(_ traing: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -466,7 +466,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
 
-    @discardableResult public func takeTop(_ top: CGFloat) -> CALayer
+    @discardableResult func takeTop(_ top: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -476,7 +476,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func takeBottom(_ bottom: CGFloat) -> CALayer
+    @discardableResult func takeBottom(_ bottom: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -486,7 +486,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func takeWidth(_ width: CGFloat) -> CALayer
+    @discardableResult func takeWidth(_ width: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -496,7 +496,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func takeHeight(_ height:CGFloat) -> CALayer
+    @discardableResult func takeHeight(_ height:CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -506,7 +506,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func takeSize(_ size: CGSize) -> CALayer
+    @discardableResult func takeSize(_ size: CGSize) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -523,7 +523,7 @@ extension CALayer: CAAnimationDelegate
     
     // MARK: MOVE 相对移动 (以中心点为依据)
     // Function MOVE , relative movement (based on the center).
-    @discardableResult public func moveX(_ x: CGFloat) -> CALayer
+    @discardableResult func moveX(_ x: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathPositionX
@@ -533,7 +533,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func moveY(_ y: CGFloat) -> CALayer
+    @discardableResult func moveY(_ y: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathPositionY
@@ -543,7 +543,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func moveXY(_ xy: CGPoint) -> CALayer
+    @discardableResult func moveXY(_ xy: CGPoint) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathPosition
@@ -553,7 +553,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
 
-    @discardableResult public func moveWidth(_ width: CGFloat) -> CALayer
+    @discardableResult func moveWidth(_ width: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathWidth
@@ -563,7 +563,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func moveHeight(_ height: CGFloat) -> CALayer
+    @discardableResult func moveHeight(_ height: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathHeight
@@ -573,7 +573,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func moveSize(_ size: CGSize) -> CALayer
+    @discardableResult func moveSize(_ size: CGSize) -> CALayer
     {
         self.slc_resetInitParams()
         my_currentKeyPath = SLCWalkerKeyPathSize
@@ -589,7 +589,7 @@ extension CALayer: CAAnimationDelegate
     
     // MARK: ADD 相对移动(以边界为依据) (repeat无效)
     // Function ADD , relative movement (based on the boundary). (parameter repeat is unavailable).
-    @discardableResult public func addLeading(_ leading: CGFloat) -> CALayer
+    @discardableResult func addLeading(_ leading: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -599,7 +599,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func addTraing(_ traing: CGFloat) -> CALayer
+    @discardableResult func addTraing(_ traing: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -609,7 +609,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
 
-    @discardableResult public func addTop(_ top: CGFloat) -> CALayer
+    @discardableResult func addTop(_ top: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -619,7 +619,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func addBottom(_ bottom: CGFloat) -> CALayer
+    @discardableResult func addBottom(_ bottom: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -629,7 +629,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func addWidth(_ width: CGFloat) -> CALayer
+    @discardableResult func addWidth(_ width: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -639,7 +639,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func addHeight(_ height: CGFloat) -> CALayer
+    @discardableResult func addHeight(_ height: CGFloat) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -649,7 +649,7 @@ extension CALayer: CAAnimationDelegate
         return self
     }
     
-    @discardableResult public func addSize(_ size: CGSize) -> CALayer
+    @discardableResult func addSize(_ size: CGSize) -> CALayer
     {
         self.slc_resetInitParams()
         my_isCAanimation = false
@@ -665,7 +665,7 @@ extension CALayer: CAAnimationDelegate
     
     // MARK: TRANSITION 转场动画
     // Transition animation
-    @discardableResult public func transitionDir(_ dir: SLCWalkerTransitionDirection) -> CALayer
+    @discardableResult func transitionDir(_ dir: SLCWalkerTransitionDirection) -> CALayer
     {
         self.slc_resetInitParams()
         my_to = dir
@@ -679,7 +679,7 @@ extension CALayer: CAAnimationDelegate
     
     // MARK: PATH 轨迹动画
     // Path animation
-    @discardableResult public func path(_ apath: UIBezierPath) -> CALayer
+    @discardableResult func path(_ apath: UIBezierPath) -> CALayer
     {
         self.slc_resetInitParams()
         my_to = apath
@@ -695,7 +695,7 @@ extension CALayer: CAAnimationDelegate
     
     // MARK: 通用属性
     // Content, general propertys
-    @discardableResult public func delay(_ adelay: TimeInterval) -> CALayer
+    @discardableResult func delay(_ adelay: TimeInterval) -> CALayer
     {
         my_delay = adelay
         return self
@@ -703,19 +703,19 @@ extension CALayer: CAAnimationDelegate
     
     // 注: repeat对TAKE和ADD无效
     // NOTE: repeat is unavailable for TAKE and ADD
-    @discardableResult public func repeatNumber(_ re: Int) -> CALayer
+    @discardableResult func repeatNumber(_ re: Int) -> CALayer
     {
         my_myRepeatCount = re
         return self
     }
     
-    @discardableResult public func reverses(_ isrecerses: Bool) -> CALayer
+    @discardableResult func reverses(_ isrecerses: Bool) -> CALayer
     {
         my_reverses = isrecerses
         return self
     }
     
-    @discardableResult public func animate(_ duration: TimeInterval) -> CALayer
+    @discardableResult func animate(_ duration: TimeInterval) -> CALayer
     {
         my_animateTime = duration
         self.slc_startWalker()
@@ -723,7 +723,7 @@ extension CALayer: CAAnimationDelegate
     }
     
     
-    public var completion: SLCWalkerCompletion {
+    var completion: SLCWalkerCompletion {
         get {
             return objc_getAssociatedObject(self, &SLCWalkerCompletionKey) as! SLCWalkerCompletion
         }
@@ -737,25 +737,25 @@ extension CALayer: CAAnimationDelegate
     
     // MARK: 动画样式
     // animated style
-    public var easeInOut: CALayer {
+    var easeInOut: CALayer {
         my_timing = CAMediaTimingFunctionName.easeInEaseOut
         my_options = UIView.AnimationOptions.curveEaseInOut
         return self
     }
     
-    public var easeIn: CALayer {
+    var easeIn: CALayer {
         my_timing = CAMediaTimingFunctionName.easeIn
         my_options = UIView.AnimationOptions.curveEaseIn
         return self
     }
     
-    public var easeOut: CALayer {
+    var easeOut: CALayer {
         my_timing = CAMediaTimingFunctionName.easeOut
         my_options = UIView.AnimationOptions.curveEaseOut
         return self
     }
     
-    public var easeLiner: CALayer {
+    var easeLiner: CALayer {
         my_timing = CAMediaTimingFunctionName.linear
         my_options = UIView.AnimationOptions.curveLinear
         return self
@@ -766,7 +766,7 @@ extension CALayer: CAAnimationDelegate
     
     // MARK: 弹性
     // bounce
-    public var spring: CALayer {
+    var spring: CALayer {
         my_animationType = SLCWalkerType.spring
         return self
     }
@@ -776,62 +776,62 @@ extension CALayer: CAAnimationDelegate
     
     // MARK: 转场动画样式 (只适用于TRANSITION, spring无效)
     // Transition animation style (only for TRANSITION, spring is unavailable)
-    public var transitionFade: CALayer {
+    var transitionFade: CALayer {
         my_transitionType = SLCWalkerTransitionTypeFade
         return self
     }
     
-    public var transitionPush: CALayer {
+    var transitionPush: CALayer {
         my_transitionType = SLCWalkerTransitionTypePush
         return self
     }
     
-    public var transitionReveal: CALayer {
+    var transitionReveal: CALayer {
         my_transitionType = SLCWalkerTransitionTypeReveal
         return self
     }
     
-    public var transitionMoveIn: CALayer {
+    var transitionMoveIn: CALayer {
         my_transitionType = SLCWalkerTransitionTypeMoveIn
         return self
     }
     
-    public var transitionCube: CALayer {
+    var transitionCube: CALayer {
         my_transitionType = SLCWalkerTransitionTypeCube
         return self
     }
     
-    public var transitionSuck: CALayer {
+    var transitionSuck: CALayer {
         my_transitionType = SLCWalkerTransitionTypeSuck
         return self
     }
     
-    public var transitionRipple: CALayer {
+    var transitionRipple: CALayer {
         my_transitionType = SLCWalkerTransitionTypeRipple
         return self
     }
     
-    public var transitionCurl: CALayer {
+    var transitionCurl: CALayer {
         my_transitionType = SLCWalkerTransitionTypeCurl
         return self
     }
     
-    public var transitionUnCurl: CALayer {
+    var transitionUnCurl: CALayer {
         my_transitionType = SLCWalkerTransitionTypeUnCurl
         return self
     }
     
-    public var transitionFlip: CALayer {
+    var transitionFlip: CALayer {
         my_transitionType = SLCWalkerTransitionTypeFlip
         return self
     }
     
-    public var transitionHollowOpen: CALayer {
+    var transitionHollowOpen: CALayer {
         my_transitionType = SLCWalkerTransitionTypeHollowOpen
         return self
     }
     
-    public var transitionHollowClose: CALayer {
+    var transitionHollowClose: CALayer {
         my_transitionType = SLCWalkerTransitionTypeHollowClose
         return self
     }
@@ -842,13 +842,13 @@ extension CALayer: CAAnimationDelegate
     
     // MARK: 关联动画,then以后前一个完成后才完成第二个
     //Associated animation, after the previous one is completed, then the second animate.
-    public var then: CALayer {
+    var then: CALayer {
         my_delay = my_animateTime
         return self
     }
     
     
-    public func removeWalkers()
+    func removeWalkers()
     {
         self.removeAllAnimations()
         if !my_isCAanimation
@@ -861,7 +861,7 @@ extension CALayer: CAAnimationDelegate
     }
     
     
-    public func reloadWalker()
+    func reloadWalker()
     {
         self.removeWalkers()
         self.slc_startWalker()

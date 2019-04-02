@@ -35,60 +35,60 @@ private var collectionView_isFooterWalker: Bool = false
 private var collectionView_totalItemCount: Int = 0
 
 
-extension UICollectionView
+public extension UICollectionView
 {
 
     // MARK: -MAKE
-    @discardableResult public func c_makeScale(_ scale: CGFloat) -> UICollectionView
+    @discardableResult func c_makeScale(_ scale: CGFloat) -> UICollectionView
     {
         self.slc_resetInitParams()
         collectionView_to = CGAffineTransform(scaleX: scale, y: scale)
         return self
     }
     
-    @discardableResult public func c_makeScaleX(_ scaleX: CGFloat) -> UICollectionView
+    @discardableResult func c_makeScaleX(_ scaleX: CGFloat) -> UICollectionView
     {
         self.slc_resetInitParams()
         collectionView_to = CGAffineTransform(scaleX: scaleX, y: 1.0)
         return self
     }
     
-    @discardableResult public func c_makeScaleY(_ scaleY: CGFloat) -> UICollectionView
+    @discardableResult func c_makeScaleY(_ scaleY: CGFloat) -> UICollectionView
     {
         self.slc_resetInitParams()
         collectionView_to = CGAffineTransform(scaleX: 1.0, y: scaleY)
         return self
     }
     
-    @discardableResult public func c_makeRotation(_ rotation: CGFloat) -> UICollectionView
+    @discardableResult func c_makeRotation(_ rotation: CGFloat) -> UICollectionView
     {
         self.slc_resetInitParams()
         collectionView_to = CGAffineTransform(rotationAngle: rotation)
         return self
     }
     
-    @discardableResult public func c_moveX(_ x: CGFloat) -> UICollectionView
+    @discardableResult func c_moveX(_ x: CGFloat) -> UICollectionView
     {
         self.slc_resetInitParams()
         collectionView_to = CGAffineTransform(translationX: x, y: 0)
         return self
     }
     
-    @discardableResult public func c_moveY(_ y: CGFloat) -> UICollectionView
+    @discardableResult func c_moveY(_ y: CGFloat) -> UICollectionView
     {
         self.slc_resetInitParams()
         collectionView_to = CGAffineTransform(translationX: 0, y: y)
         return self
     }
     
-    @discardableResult public func c_moveXY(_ xy: CGPoint) -> UICollectionView
+    @discardableResult func c_moveXY(_ xy: CGPoint) -> UICollectionView
     {
         self.slc_resetInitParams()
         collectionView_to = CGAffineTransform(translationX: xy.x, y: xy.y)
         return self
     }
     
-    @discardableResult public func c_transitionTo(_ to: UIView) -> UICollectionView
+    @discardableResult func c_transitionTo(_ to: UIView) -> UICollectionView
     {
         self.slc_resetInitParams()
         collectionView_transition = SLCCollectionTransition.from
@@ -96,121 +96,121 @@ extension UICollectionView
         return self
     }
     
-    @discardableResult public func c_itemDuration(_ duration: TimeInterval) -> UICollectionView
+    @discardableResult func c_itemDuration(_ duration: TimeInterval) -> UICollectionView
     {
         collectionView_itemDuration = duration
         return self
     }
     
-    @discardableResult public func c_itemDelay(_ delay: TimeInterval) -> UICollectionView
+    @discardableResult func c_itemDelay(_ delay: TimeInterval) -> UICollectionView
     {
         collectionView_itemDelay = delay
         return self
     }
     
-    @discardableResult public func c_headerWalker(_ walker: Bool) -> UICollectionView
+    @discardableResult func c_headerWalker(_ walker: Bool) -> UICollectionView
     {
         collectionView_isHeaderWalker = walker
         return self
     }
     
-    @discardableResult public func c_footerWalker(_ walker: Bool) -> UICollectionView
+    @discardableResult func c_footerWalker(_ walker: Bool) -> UICollectionView
     {
         collectionView_isFooterWalker = walker
         return self
     }
     
-    public func reloadDataWithWalker()
+    func reloadDataWithWalker()
     {
         collectionView_reload = SLCCollectionReload.visible
         self.slc_startWalker()
     }
     
-    public func reloadDataFixedWithDancer(_ indexPath: IndexPath)
+    func reloadDataFixedWithDancer(_ indexPath: IndexPath)
     {
         collectionView_reload = SLCCollectionReload.fixed
         collectionView_indexPath = indexPath
         self.slc_startWalker()
     }
     
-    public var c_easeLiner: UICollectionView {
+    var c_easeLiner: UICollectionView {
         collectionView_animationType = UIView.AnimationOptions.curveLinear
         return self
     }
     
-    public var c_easeInOut: UICollectionView {
+    var c_easeInOut: UICollectionView {
         collectionView_animationType = UIView.AnimationOptions.curveEaseInOut
         return self
     }
     
-    public var c_easeIn: UICollectionView {
+    var c_easeIn: UICollectionView {
         collectionView_animationType = UIView.AnimationOptions.curveEaseIn
         return self
     }
     
-    public var c_easeOut: UICollectionView {
+    var c_easeOut: UICollectionView {
         collectionView_animationType = UIView.AnimationOptions.curveEaseOut
         return self
     }
     
     
     
-    public var c_transitionFlipFromLeft: UICollectionView {
+    var c_transitionFlipFromLeft: UICollectionView {
         self.slc_resetInitParams()
         collectionView_transition = SLCCollectionTransition.content
         collectionView_transitionAnimation = UIView.AnimationOptions.transitionFlipFromLeft
         return self
     }
     
-    public var c_transitionFlipFromRight: UICollectionView {
+    var c_transitionFlipFromRight: UICollectionView {
         self.slc_resetInitParams()
         collectionView_transition = SLCCollectionTransition.content
         collectionView_transitionAnimation = UIView.AnimationOptions.transitionFlipFromRight
         return self
     }
     
-    public var c_transitionCurlUp: UICollectionView {
+    var c_transitionCurlUp: UICollectionView {
         self.slc_resetInitParams()
         collectionView_transition = SLCCollectionTransition.content
         collectionView_transitionAnimation = UIView.AnimationOptions.transitionCurlUp
         return self
     }
     
-    public var c_transitionCurlDown: UICollectionView {
+    var c_transitionCurlDown: UICollectionView {
         self.slc_resetInitParams()
         collectionView_transition = SLCCollectionTransition.content
         collectionView_transitionAnimation = UIView.AnimationOptions.transitionCurlDown
         return self
     }
     
-    public var c_transitionCrossDissolve: UICollectionView {
+    var c_transitionCrossDissolve: UICollectionView {
         self.slc_resetInitParams()
         collectionView_transition = SLCCollectionTransition.content
         collectionView_transitionAnimation = UIView.AnimationOptions.transitionCrossDissolve
         return self
     }
     
-    public var c_transitionFlipFromTop: UICollectionView {
+    var c_transitionFlipFromTop: UICollectionView {
         self.slc_resetInitParams()
         collectionView_transition = SLCCollectionTransition.content
         collectionView_transitionAnimation = UIView.AnimationOptions.transitionFlipFromTop
         return self
     }
     
-    public var c_transitionFlipFromBottom: UICollectionView {
+    var c_transitionFlipFromBottom: UICollectionView {
         self.slc_resetInitParams()
         collectionView_transition = SLCCollectionTransition.content
         collectionView_transitionAnimation = UIView.AnimationOptions.transitionFlipFromBottom
         return self
     }
     
-    public var c_spring: UICollectionView {
+    var c_spring: UICollectionView {
         collectionView_spring = true
         return self
     }
     
     
-    public var c_completion: SLCWalkerVoidCompletion {
+    var c_completion: SLCWalkerVoidCompletion {
         get {
             return objc_getAssociatedObject(self, &SLCCollrctionViewCompletionKey) as! SLCWalkerVoidCompletion
         }

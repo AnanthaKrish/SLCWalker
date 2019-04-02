@@ -61,11 +61,11 @@ private var view_spring: Bool = false
 private var view_isTransitionContent: Bool = false
 private var view_transitionOptions: UIView.AnimationOptions = UIView.AnimationOptions.curveLinear
 
-extension UIView
+public extension UIView
 {
     // MARK: MAKE 全部以中心点为依据
     // Function MAKE, based on the center.
-    @discardableResult public func makeSize(_ size: CGSize) -> UIView
+    @discardableResult func makeSize(_ size: CGSize) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeSize
@@ -73,7 +73,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makePosition(_ position: CGPoint) -> UIView
+    @discardableResult func makePosition(_ position: CGPoint) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makePosition
@@ -81,7 +81,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeX(_ x: CGFloat) -> UIView
+    @discardableResult func makeX(_ x: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeX
@@ -89,7 +89,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeY(_ y: CGFloat) -> UIView
+    @discardableResult func makeY(_ y: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeY
@@ -97,7 +97,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeWidth(_ width: CGFloat) -> UIView
+    @discardableResult func makeWidth(_ width: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeWidth
@@ -105,7 +105,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeHeight(_ height: CGFloat) -> UIView
+    @discardableResult func makeHeight(_ height: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeHeight
@@ -113,7 +113,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeScale(_ scale: CGFloat) -> UIView
+    @discardableResult func makeScale(_ scale: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeScale
@@ -121,7 +121,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeScaleX(_ scaleX: CGFloat) -> UIView
+    @discardableResult func makeScaleX(_ scaleX: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeScaleX
@@ -129,7 +129,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeScaleY(_ scaleY: CGFloat) -> UIView
+    @discardableResult func makeScaleY(_ scaleY: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeScaleY
@@ -137,7 +137,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeRotationX(_ rotationX: CGFloat) -> UIView
+    @discardableResult func makeRotationX(_ rotationX: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeRotationX
@@ -145,7 +145,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeRotationY(_ rotationY: CGFloat) -> UIView
+    @discardableResult func makeRotationY(_ rotationY: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeRotationY
@@ -153,7 +153,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeRotationZ(_ rotationZ: CGFloat) -> UIView
+    @discardableResult func makeRotationZ(_ rotationZ: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeRotationZ
@@ -161,7 +161,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeBackground(_ background: UIColor) -> UIView
+    @discardableResult func makeBackground(_ background: UIColor) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeBackground
@@ -169,7 +169,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeOpacity(_ opacity: CGFloat) -> UIView
+    @discardableResult func makeOpacity(_ opacity: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeOpacity
@@ -177,7 +177,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeCornerRadius(_ corner: CGFloat) -> UIView
+    @discardableResult func makeCornerRadius(_ corner: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeCornerRadius
@@ -185,7 +185,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeStorkeEnd(_ storkeEnd: CGFloat) -> UIView
+    @discardableResult func makeStorkeEnd(_ storkeEnd: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeStrokeEnd
@@ -193,7 +193,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeContent(_ from: Any, _ to: Any) -> UIView
+    @discardableResult func makeContent(_ from: Any, _ to: Any) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeContent
@@ -202,7 +202,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeBorderWidth(_ borderWidth: CGFloat) -> UIView
+    @discardableResult func makeBorderWidth(_ borderWidth: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeBorderWidth
@@ -210,7 +210,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeShadowColor(_ shadowColor: UIColor) -> UIView
+    @discardableResult func makeShadowColor(_ shadowColor: UIColor) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeShadowColor
@@ -218,7 +218,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeShadowOffset(_ shadowOffset: CGSize) -> UIView
+    @discardableResult func makeShadowOffset(_ shadowOffset: CGSize) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeShadowOffset
@@ -226,7 +226,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeShadowOpacity(_ shadowOpacity: CGFloat) -> UIView
+    @discardableResult func makeShadowOpacity(_ shadowOpacity: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeShadowOpacity
@@ -234,7 +234,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func makeShadowRadius(_ shadowRadius: CGFloat) -> UIView
+    @discardableResult func makeShadowRadius(_ shadowRadius: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.makeShadowRadius
@@ -249,7 +249,7 @@ extension UIView
     
     // MARK: TAKE 全部以边界点为依据 (repeat无效)
     // Function TAKE, based on the boundary (parameter repeat is unavailable).
-    @discardableResult public func takeFrame(_ rect: CGRect) -> UIView
+    @discardableResult func takeFrame(_ rect: CGRect) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.takeFrame
@@ -257,7 +257,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func takeLeading(_ leading: CGFloat) -> UIView
+    @discardableResult func takeLeading(_ leading: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.takeLeading
@@ -265,7 +265,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func takeTraing(_ traing: CGFloat) -> UIView
+    @discardableResult func takeTraing(_ traing: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.takeTraing
@@ -273,7 +273,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func takeTop(_ top: CGFloat) -> UIView
+    @discardableResult func takeTop(_ top: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.takeTop
@@ -281,7 +281,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func takeBottom(_ bottom: CGFloat) -> UIView
+    @discardableResult func takeBottom(_ bottom: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.takeBottom
@@ -289,7 +289,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func takeWidth(_ width: CGFloat) -> UIView
+    @discardableResult func takeWidth(_ width: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.takeWidth
@@ -297,7 +297,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func takeHeight(_ height: CGFloat) -> UIView
+    @discardableResult func takeHeight(_ height: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.takeHeight
@@ -305,7 +305,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func takeSize(_ size: CGSize) -> UIView
+    @discardableResult func takeSize(_ size: CGSize) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.takeSize
@@ -322,7 +322,7 @@ extension UIView
     
     // MARK: MOVE 相对移动 (以中心点为依据)
     // Function MOVE , relative movement (based on the center).
-    @discardableResult public func moveX(_ x: CGFloat) -> UIView
+    @discardableResult func moveX(_ x: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.moveX
@@ -330,7 +330,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func moveY(_ y: CGFloat) -> UIView
+    @discardableResult func moveY(_ y: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.moveY
@@ -338,7 +338,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func moveXY(_ xy: CGPoint) -> UIView
+    @discardableResult func moveXY(_ xy: CGPoint) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.moveXY
@@ -346,7 +346,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func moveWidth(_ width: CGFloat) -> UIView
+    @discardableResult func moveWidth(_ width: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.moveWidth
@@ -354,7 +354,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func moveHeight(_ height: CGFloat) -> UIView
+    @discardableResult func moveHeight(_ height: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.moveHeight
@@ -362,7 +362,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func moveSize(_ size: CGSize) -> UIView
+    @discardableResult func moveSize(_ size: CGSize) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.moveSize
@@ -378,7 +378,7 @@ extension UIView
     
     // MARK: ADD 相对移动(以边界为依据) (repeat无效)
     // Function ADD , relative movement (based on the boundary). (parameter repeat is unavailable).
-    @discardableResult public func addLeading(_ leading: CGFloat) -> UIView
+    @discardableResult func addLeading(_ leading: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.addLeading
@@ -386,7 +386,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func addTraing(_ traing: CGFloat) -> UIView
+    @discardableResult func addTraing(_ traing: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.addTraing
@@ -394,7 +394,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func addTop(_ top: CGFloat) -> UIView
+    @discardableResult func addTop(_ top: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.addTop
@@ -402,7 +402,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func addBottom(_ bottom: CGFloat) -> UIView
+    @discardableResult func addBottom(_ bottom: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.addBottom
@@ -410,7 +410,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func addWidth(_ width: CGFloat) -> UIView
+    @discardableResult func addWidth(_ width: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.addWidth
@@ -418,7 +418,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func addHeight(_ height: CGFloat) -> UIView
+    @discardableResult func addHeight(_ height: CGFloat) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.addHeight
@@ -426,7 +426,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func addSize(_ size: CGSize) -> UIView
+    @discardableResult func addSize(_ size: CGSize) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.addSize
@@ -441,7 +441,7 @@ extension UIView
     
     // MARK: TRANSITION 转场动画
     // Transition animation
-    @discardableResult public func transitionDir(_ dir: SLCWalkerTransitionDirection) -> UIView
+    @discardableResult func transitionDir(_ dir: SLCWalkerTransitionDirection) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.transition
@@ -449,7 +449,7 @@ extension UIView
         return self
     }
     
-    @discardableResult public func transitionFrom(_ from: Any, _ to: Any) -> UIView
+    @discardableResult func transitionFrom(_ from: Any, _ to: Any) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.transition
@@ -465,7 +465,7 @@ extension UIView
     
     // MARK: PATH 轨迹动画
     // Path animation
-    @discardableResult public func path(_ apath: UIBezierPath) -> UIView
+    @discardableResult func path(_ apath: UIBezierPath) -> UIView
     {
         self.slc_resetInitParams()
         view_theWalker = SLCWalker.path
@@ -482,7 +482,7 @@ extension UIView
     
     // MARK: 通用属性
     // Content, general propertys
-    @discardableResult public func delay(_ adelay: TimeInterval) -> UIView
+    @discardableResult func delay(_ adelay: TimeInterval) -> UIView
     {
         view_delay = adelay
         return self
@@ -490,19 +490,19 @@ extension UIView
     
     // 注: repeat对TAKE和ADD无效
     // NOTE: repeat is unavailable for TAKE and ADD
-    @discardableResult public func repeatNumber(_ re: Int) -> UIView
+    @discardableResult func repeatNumber(_ re: Int) -> UIView
     {
         view_repeat = re
         return self
     }
     
-    @discardableResult public func reverses(_ isrecerses: Bool) -> UIView
+    @discardableResult func reverses(_ isrecerses: Bool) -> UIView
     {
         view_reverse = isrecerses
         return self
     }
     
-    @discardableResult public func animate(_ duration: TimeInterval) -> UIView
+    @discardableResult func animate(_ duration: TimeInterval) -> UIView
     {
         view_animate = duration
         self.slc_startWalker()
@@ -510,7 +510,7 @@ extension UIView
     }
     
     
-    public var completion: SLCWalkerCompletion {
+    var completion: SLCWalkerCompletion {
         get {
             return objc_getAssociatedObject(self, &SLCWalkerViewCompletionKey) as! SLCWalkerCompletion
         }
@@ -525,25 +525,25 @@ extension UIView
     
     // MARK: 动画样式
     // animated style
-    public var easeInOut: UIView {
+    var easeInOut: UIView {
         view_easeType = SLCViewEasy.easeInOut
         view_transitionOptions = UIView.AnimationOptions.curveEaseInOut
         return self
     }
     
-    public var easeIn: UIView {
+    var easeIn: UIView {
         view_easeType = SLCViewEasy.easeIn
         view_transitionOptions = UIView.AnimationOptions.curveEaseIn
         return self
     }
     
-    public var easeOut: UIView {
+    var easeOut: UIView {
         view_easeType = SLCViewEasy.easeOut
         view_transitionOptions = UIView.AnimationOptions.curveEaseOut
         return self
     }
     
-    public var easeLiner: UIView {
+    var easeLiner: UIView {
         view_easeType = SLCViewEasy.easeLiner
         view_transitionOptions = UIView.AnimationOptions.curveLinear
         return self
@@ -555,7 +555,7 @@ extension UIView
     
     // MARK: 弹性
     // bounce
-    public var spring: UIView {
+    var spring: UIView {
         view_spring = true
         return self
     }
@@ -565,43 +565,43 @@ extension UIView
     
     // MARK: 转场动画样式 (只适用于TRANSITION, spring无效. 其他通过layer去操作)
     // Transition animation style (only for TRANSITION, spring is unavailable, Others operate through the layer)
-    public var transitionFlipFromLeft: UIView {
+    var transitionFlipFromLeft: UIView {
         view_transitionOptions = UIView.AnimationOptions.transitionFlipFromLeft
         view_theWalker = SLCWalker.transition
         return self
     }
     
-    public var transitionFlipFromRight: UIView {
+    var transitionFlipFromRight: UIView {
         view_transitionOptions = UIView.AnimationOptions.transitionFlipFromRight
         view_theWalker = SLCWalker.transition
         return self
     }
     
-    public var transitionCurlUp: UIView {
+    var transitionCurlUp: UIView {
         view_transitionOptions = UIView.AnimationOptions.transitionCurlUp
         view_theWalker = SLCWalker.transition
         return self
     }
     
-    public var transitionCurlDown: UIView {
+    var transitionCurlDown: UIView {
         view_transitionOptions = UIView.AnimationOptions.transitionCurlDown
         view_theWalker = SLCWalker.transition
         return self
     }
     
-    public var transitionCrossDissolve: UIView {
+    var transitionCrossDissolve: UIView {
         view_transitionOptions = UIView.AnimationOptions.transitionCrossDissolve
         view_theWalker = SLCWalker.transition
         return self
     }
     
-    public var transitionFlipFromTop: UIView {
+    var transitionFlipFromTop: UIView {
         view_transitionOptions = UIView.AnimationOptions.transitionFlipFromTop
         view_theWalker = SLCWalker.transition
         return self
     }
     
-    public var transitionFlipFromBottom: UIView {
+    var transitionFlipFromBottom: UIView {
         view_transitionOptions = UIView.AnimationOptions.transitionFlipFromBottom
         view_theWalker = SLCWalker.transition
         return self
@@ -611,18 +611,18 @@ extension UIView
     
     // MARK: 关联动画,then以后前一个完成后才完成第二个
     //Associated animation, after the previous one is completed, then the second animate.
-    public var then: UIView {
+    var then: UIView {
         view_delay = view_animate
         return self
     }
     
     
-    public func removeWalkers()
+    func removeWalkers()
     {
         self.layer.removeWalkers()
     }
     
-    public func reloadWalker()
+    func reloadWalker()
     {
         self.layer.reloadWalker()
     }
